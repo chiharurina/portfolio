@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Arriana Flores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green: #B3D380;
+            --periwinkle: #CCCCFF;
+            --white: #FFFFFF;
+            --off-white: #FAFAFA;
+            --light-gray: #F5F5F5;
+            --text-dark: #2A2A2A;
+            --text-light: #6A6A6A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        /* Header */
+        header {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--periwinkle);
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--green);
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--green);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 6rem;
+            animation: fadeIn 0.8s ease-out 0.2s backwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+            letter-spacing: -1px;
+        }
+
+        .hero h1 .accent {
+            color: var(--green);
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            max-width: 700px;
+            line-height: 1.8;
+        }
+
+        /* Filter Buttons */
+        .filter-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--periwinkle);
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--green);
+            color: var(--white);
+            border-color: var(--green);
+        }
+
+        /* Projects Grid */
+        .projects-section {
+            padding: 4rem 0 8rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 4rem 3rem;
+        }
+
+        .project-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+            cursor: pointer;
+            display: block;
+        }
+
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-card.hidden {
+            display: none;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: var(--light-gray);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--periwinkle);
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Crimson Pro', serif;
+            font-size: 4rem;
+            color: var(--periwinkle);
+            opacity: 0.3;
+        }
+
+        .project-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: var(--periwinkle);
+            opacity: 0.4;
+        }
+
+        .project-card:hover .project-image {
+            border-color: var(--green);
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-number {
+            font-family: 'Crimson Pro', serif;
+            font-size: 0.85rem;
+            color: var(--green);
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .project-category {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+
+        .project-card h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            letter-spacing: -0.3px;
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover h3 {
+            color: var(--green);
+        }
+
+        .project-card p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .project-details {
+            margin-bottom: 2rem;
+        }
+
+        .detail-item {
+            display: flex;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 300;
+            min-width: 100px;
+        }
+
+        .detail-value {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            font-weight: 400;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.5rem 1rem;
+            background: var(--off-white);
+            color: var(--text-light);
+            font-size: 0.85rem;
+            font-weight: 300;
+            border: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .project-link {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            color: var(--text-dark);
+            text-decoration: none;
+            border: 1px solid var(--periwinkle);
+            font-size: 0.85rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .project-link:hover {
+            background: var(--green);
+            color: var(--white);
+            border-color: var(--green);
+        }
+
+        .project-link.primary {
+            background: var(--green);
+            color: var(--white);
+            border-color: var(--green);
+        }
+
+        .project-link.primary:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--periwinkle);
+            background: var(--white);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+
+        .footer-content a {
+            color: var(--green);
+            text-decoration: none;
+        }
+
+        /* Accent elements */
+        .accent-block {
+            position: fixed;
+            top: 20%;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: var(--periwinkle);
+            opacity: 0.3;
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-20px) scale(1.05);
+            }
+        }
+
+        .accent-block-2 {
+            position: fixed;
+            bottom: 10%;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: var(--periwinkle);
+            opacity: 0.2;
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 8s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        /* Cursor trail */
+        .cursor-trail {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 9999;
+            transition: opacity 0.3s;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 6rem 0 4rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .filter-container {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="accent-block"></div>
+    <div class="accent-block-2"></div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Arriana Flores</a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html" class="active">Projects</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Themed <span class="accent">Entertainment</span> &amp; Tech</h1>
+                <p>Animatronics, ride controls, show systems, and the hardware underneath them. Each project is a step toward engineering the experiences guests remember.</p>
+            </div>
+        </section>
+
+        <section class="projects-section">
+            <div class="container">
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="show">Show Control &amp; Animatronics</button>
+                    <button class="filter-btn" data-filter="ride">Ride Systems</button>
+                    <button class="filter-btn" data-filter="hardware">Hardware &amp; RF</button>
+                    <button class="filter-btn" data-filter="software">Software &amp; Robotics</button>
+                    <button class="filter-btn" data-filter="av">Lighting &amp; AV</button>
+                    <button class="filter-btn" data-filter="leadership">Leadership</button>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 01 -->
+                    <div class="project-card" data-category="show">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">01</div>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-number">PROJECT 01</span>
+                            <span class="project-category">Show Control</span>
+                        </div>
+                        <h3>Cal Poly Universities Rose Float</h3>
+                        <p>Show control for a Tournament of Roses Parade float in Pasadena. Integrated Gilderfluke show controllers and audio repeaters into a custom control system, programmed hydraulic animation sequences in Gilderfluke PC-MACs with pressures tuned for smooth, repeatable motion, and engineered standalone operation so animation and audio ran 7+ hours without the main show control box. Built with a cross-campus student team to meet parade deadlines and safety requirements.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Role:</span>
+                                <span class="detail-value">Show control team member</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Status:</span>
+                                <span class="detail-value">Completed</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Scope:</span>
+                                <span class="detail-value">7+ hr standalone show</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Gilderfluke PC-MACs</span>
+                            <span class="tech-tag">Hydraulics</span>
+                            <span class="tech-tag">Audio Repeaters</span>
+                            <span class="tech-tag">Show Control</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">View Details</a>
+                            <a href="#" class="project-link">Photos</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 02 -->
+                    <div class="project-card" data-category="show">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">02</div>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-number">PROJECT 02</span>
+                            <span class="project-category">Show Control</span>
+                        </div>
+                        <h3>Retro Rewind Escape Room</h3>
+                        <p>A multi-room themed escape experience built like a mini attraction: animatronic characters, synchronized lighting and sound cues, and a central show control system tying every room together.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Role:</span>
+                                <span class="detail-value">Systems &amp; controls lead</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Status:</span>
+                                <span class="detail-value">In development</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Scope:</span>
+                                <span class="detail-value">Multi-room show control</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Productivity P1-550 PLC</span>
+                            <span class="tech-tag">ESP32</span>
+                            <span class="tech-tag">Modbus</span>
+                            <span class="tech-tag">Lighting &amp; Sound Cues</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">View Details</a>
+                            <a href="#" class="project-link">Photos</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 03 -->
+                    <div class="project-card" data-category="show">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">03</div>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-number">PROJECT 03</span>
+                            <span class="project-category">Animatronics</span>
+                        </div>
+                        <h3>Animatronic Characters</h3>
+                        <p>Motion and control design for three figures: Ronnie, Winston, and a Demogorgon. The Demogorgon's jaw uses an Actuonix P16-P linear actuator with an LAC control board in RC servo mode, driven from an ESP32 for a reliable open/close gag.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Role:</span>
+                                <span class="detail-value">Animatronics &amp; controls</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Status:</span>
+                                <span class="detail-value">In development</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Scope:</span>
+                                <span class="detail-value">3 figures</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Actuonix P16-P</span>
+                            <span class="tech-tag">LAC Board</span>
+                            <span class="tech-tag">ESP32</span>
+                            <span class="tech-tag">RC Servo Control</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">View Details</a>
+                            <a href="#" class="project-link">Photos</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 04 -->
+                    <div class="project-card" data-category="ride">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">04</div>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-number">PROJECT 04</span>
+                            <span class="project-category">Ride Systems</span>
+                        </div>
+                        <h3>Roller Coaster Ride Controls</h3>
+                        <p>Electronics and control logic for a ride engineering competition coaster. The design uses a block system so only one train can occupy a zone at a time, the same principle real coasters use to stay safe.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Role:</span>
+                                <span class="detail-value">Electronics &amp; controls</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Status:</span>
+                                <span class="detail-value">Planning</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Scope:</span>
+                                <span class="detail-value">Block-zone safety logic</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">PLC</span>
+                            <span class="tech-tag">Block System</span>
+                            <span class="tech-tag">Sensors</span>
+                            <span class="tech-tag">Ride Safety Logic</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">View Details</a>
+                            <a href="#" class="project-link">Photos</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 05 -->
+                    <div class="project-card" data-category="hardware">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">05</div>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-number">PROJECT 05</span>
+                            <span class="project-category">Hardware</span>
+                        </div>
+                        <h3>"Holy Grail" Show Control PCB</h3>
+                        <p>A custom control board co-designed for the escape room. Power delivery was simulated in LTspice before layout, and a field failure was traced down to a damaged ESD protection diode and fixed.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Role:</span>
+                                <span class="detail-value">Co-designer</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Status:</span>
+                                <span class="detail-value">Simulated &amp; debugged</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Scope:</span>
+                                <span class="detail-value">Custom board for the show</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">PCB Design</span>
+                            <span class="tech-tag">LTspice</span>
+                            <span class="tech-tag">Power Simulation</span>
+                            <span class="tech-tag">ESD Protection</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">View Details</a>
+                            <a href="#" class="project-link">Photos</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 06 -->
+                    <div class="project-card" data-category="software">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">06</div>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-number">PROJECT 06</span>
+                            <span class="project-category">Robotics / Software</span>
+                        </div>
+                        <h3>Natural Language Robotic Control</h3>
+                        <p>Directed end-to-end development of a modular robotic control framework that lets a robot take plain-English commands, integrating an LLM (Ollama), PostgreSQL, and ROS2 into a single pipeline across a multi-member team. Built a dual-interpreter command system in Python with an Ollama interpreter plus a rule-based fallback, hitting 100% command accuracy with sub-1-second response for pre-mapped inputs. Designed a PostgreSQL versioning schema that stores motion sequences as JSON, enabling full rollback without touching execution code.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Role:</span>
+                                <span class="detail-value">Project Manager</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Status:</span>
+                                <span class="detail-value">Completed</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Scope:</span>
+                                <span class="detail-value">100% accuracy, &lt;1 s response</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Ollama (LLM)</span>
+                            <span class="tech-tag">ROS2</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">JSON</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">View Details</a>
+                            <a href="#" class="project-link">Photos</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 07 -->
+                    <div class="project-card" data-category="software">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">07</div>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-number">PROJECT 07</span>
+                            <span class="project-category">Show Software</span>
+                        </div>
+                        <h3>Game Master Control Interface</h3>
+                        <p>A custom HTML control page that lets the game master monitor and run the escape room in real time, the operator console for the whole show.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Role:</span>
+                                <span class="detail-value">Designer &amp; developer</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Status:</span>
+                                <span class="detail-value">Complete</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Scope:</span>
+                                <span class="detail-value">Live show operation</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Operator UI</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">View Details</a>
+                            <a href="#" class="project-link">Photos</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 08 -->
+                    <div class="project-card" data-category="hardware">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">08</div>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-number">PROJECT 08</span>
+                            <span class="project-category">UAV / Embedded</span>
+                        </div>
+                        <h3>NGCP UAV Flight Stack &amp; Telemetry</h3>
+                        <p>Designed and debugged the embedded flight stack for the NGCP UAV using a Raspberry Pi, Pixhawk, and QGroundControl, bridging high-level mission planning with low-level hardware across every flight test cycle. Optimized I2C/UART data flow to cut communication errors by 30%, and built a cost-efficient telemetry backbone with a KrakenSDR on Linux for radio direction finding.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Role:</span>
+                                <span class="detail-value">Electrical Lead</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Status:</span>
+                                <span class="detail-value">Flight tested</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Scope:</span>
+                                <span class="detail-value">30% fewer comm errors</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Raspberry Pi</span>
+                            <span class="tech-tag">Pixhawk</span>
+                            <span class="tech-tag">QGroundControl</span>
+                            <span class="tech-tag">I2C / UART</span>
+                            <span class="tech-tag">KrakenSDR</span>
+                            <span class="tech-tag">Linux</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">View Details</a>
+                            <a href="#" class="project-link">Photos</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 09 -->
+                    <div class="project-card" data-category="hardware">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">09</div>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-number">PROJECT 09</span>
+                            <span class="project-category">RF / Embedded</span>
+                        </div>
+                        <h3>Custom SDR Board, NGCP UAV</h3>
+                        <p>Leading a custom software-defined radio board to replace the team's off-the-shelf KrakenSDR, from RF front-end component selection to a phased build plan reviewed with our faculty advisor.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Role:</span>
+                                <span class="detail-value">Electrical Lead</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Status:</span>
+                                <span class="detail-value">In development</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Scope:</span>
+                                <span class="detail-value">Replaces KrakenSDR</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">RF Front-End</span>
+                            <span class="tech-tag">LNAs</span>
+                            <span class="tech-tag">SAW Filters</span>
+                            <span class="tech-tag">TCXO</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">View Details</a>
+                            <a href="#" class="project-link">Photos</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 10 -->
+                    <div class="project-card" data-category="leadership">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">10</div>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-number">PROJECT 10</span>
+                            <span class="project-category">Leadership</span>
+                        </div>
+                        <h3>IEEE Technical Workshop Series</h3>
+                        <p>Conceptualized and delivered a hands-on workshop series for 50+ IEEE members, turning complex engineering concepts into sessions on PCB layout, RF technology, and microcontroller firmware. Directed the full lifecycle from curriculum development and component procurement to cross-club collaborations, boosting student engagement by 68%.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Role:</span>
+                                <span class="detail-value">Project Manager, IEEE</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Status:</span>
+                                <span class="detail-value">Ongoing</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Scope:</span>
+                                <span class="detail-value">50+ members, +68% engagement</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">PCB Layout</span>
+                            <span class="tech-tag">RF Technology</span>
+                            <span class="tech-tag">Microcontroller Firmware</span>
+                            <span class="tech-tag">Curriculum Design</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">View Details</a>
+                            <a href="#" class="project-link">Photos</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 11 -->
+                    <div class="project-card" data-category="av">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">11</div>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-number">PROJECT 11</span>
+                            <span class="project-category">Lighting &amp; AV</span>
+                        </div>
+                        <h3>Theater Lighting &amp; AV</h3>
+                        <p>Hands-on lighting and AV work for live theater productions, bringing a stage-tech mindset to how cues, timing, and audience experience fit together.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Role:</span>
+                                <span class="detail-value">Lighting &amp; AV crew</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Status:</span>
+                                <span class="detail-value">Ongoing</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Scope:</span>
+                                <span class="detail-value">Live productions</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Stage Lighting</span>
+                            <span class="tech-tag">Audio</span>
+                            <span class="tech-tag">Video</span>
+                            <span class="tech-tag">Live Show Ops</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">View Details</a>
+                            <a href="#" class="project-link">Photos</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 12 -->
+                    <div class="project-card" data-category="av">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">12</div>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-number">PROJECT 12</span>
+                            <span class="project-category">Lighting &amp; AV</span>
+                        </div>
+                        <h3>Show Cue Documentation</h3>
+                        <p>Lighting and sound cue sheets, event timelines, and checklists for a multi-room experience, so every effect fires at the right moment in every room.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Role:</span>
+                                <span class="detail-value">Author</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Status:</span>
+                                <span class="detail-value">Complete</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Scope:</span>
+                                <span class="detail-value">Multi-room cue sheets</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Cue Sheets</span>
+                            <span class="tech-tag">Show Timelines</span>
+                            <span class="tech-tag">Checklists</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">View Details</a>
+                            <a href="#" class="project-link">Photos</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 13 -->
+                    <div class="project-card" data-category="software">
+                        <div class="project-image">
+                            <div class="project-image-placeholder">13</div>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-number">PROJECT 13</span>
+                            <span class="project-category">Robotics</span>
+                        </div>
+                        <h3>Robotics &amp; Motion Analysis</h3>
+                        <p>Coursework in robot kinematics using DH parameters in MATLAB, the same math behind multi-axis animatronic figures and ride vehicles.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Role:</span>
+                                <span class="detail-value">Student</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Status:</span>
+                                <span class="detail-value">Coursework</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Scope:</span>
+                                <span class="detail-value">Motion fundamentals</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">MATLAB</span>
+                            <span class="tech-tag">DH Parameters</span>
+                            <span class="tech-tag">Kinematics</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary">View Details</a>
+                            <a href="#" class="project-link">Photos</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2026 Arriana Flores</p>
+                <p><a href="index.html">Back to Home</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ========== FILTER FUNCTIONALITY ==========
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                // Filter projects
+                projectCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    
+                    if (filterValue === 'all' || category === filterValue) {
+                        card.classList.remove('hidden');
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, 10);
+                    } else {
+                        card.classList.remove('visible');
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // ========== INTERSECTION OBSERVER FOR ANIMATIONS ==========
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        projectCards.forEach(card => {
+            observer.observe(card);
+        });
+
+        // ========== PARALLAX EFFECT ON ACCENT BLOCKS ==========
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    const accent1 = document.querySelector('.accent-block');
+                    const accent2 = document.querySelector('.accent-block-2');
+                    
+                    if (accent1) accent1.style.transform = `translateY(${scrolled * 0.3}px)`;
+                    if (accent2) accent2.style.transform = `translateY(${-scrolled * 0.2}px)`;
+                    
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // ========== PROJECT CARD HOVER EFFECT ==========
+        projectCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // ========== CURSOR TRAIL EFFECT ==========
+        const trails = [];
+        const maxTrails = 10;
+        
+        for (let i = 0; i < maxTrails; i++) {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            document.body.appendChild(trail);
+            trails.push(trail);
+        }
+        
+        let mouseX = 0;
+        let mouseY = 0;
+        let currentTrail = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            const trail = trails[currentTrail];
+            trail.style.left = mouseX - 4 + 'px';
+            trail.style.top = mouseY - 4 + 'px';
+            trail.style.opacity = '0.6';
+            
+            setTimeout(() => {
+                trail.style.opacity = '0';
+            }, 300);
+            
+            currentTrail = (currentTrail + 1) % maxTrails;
+        });
+    </script>
+</body>
+</html>
