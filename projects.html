@@ -160,9 +160,9 @@
 
         .filter-btn:hover,
         .filter-btn.active {
-            background: var(--green-ink);
-            color: var(--white);
-            border-color: var(--green-ink);
+            background: var(--green);
+            color: var(--text-dark);
+            border-color: var(--green);
         }
 
         /* Projects Grid */
@@ -342,15 +342,15 @@
         }
 
         .project-link:hover {
-            background: var(--green-ink);
-            color: var(--white);
-            border-color: var(--green-ink);
+            background: var(--green);
+            color: var(--text-dark);
+            border-color: var(--green);
         }
 
         .project-link.primary {
-            background: var(--green-ink);
-            color: var(--white);
-            border-color: var(--green-ink);
+            background: var(--green);
+            color: var(--text-dark);
+            border-color: var(--green);
         }
 
         .project-link.primary:hover {
@@ -378,7 +378,8 @@
             text-decoration: none;
         }
 
-        /* Accent elements */
+        /* Accent elements (replaced by the bouncing circles in fx.js) */
+        .accent-block, .accent-block-2 { display: none !important; }
         .accent-block {
             position: fixed;
             top: 20%;
@@ -420,7 +421,7 @@
             position: fixed;
             width: 8px;
             height: 8px;
-            background: var(--green-ink);
+            background: var(--green);
             border-radius: 50%;
             pointer-events: none;
             opacity: 0;
@@ -1296,5 +1297,6 @@
             if (!links.querySelector('a, button')) links.remove();
         });
     </script>
+    <script src="fx.js" data-trail="off"></script>
 </body>
 </html>

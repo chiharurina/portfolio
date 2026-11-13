@@ -62,24 +62,21 @@
         .btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 8px;
             min-height: 48px; padding: 0 22px;
-            border-radius: 999px; border: 2px solid var(--green-ink);
-            background: var(--green-ink); color: var(--white);
+            border-radius: 999px; border: 2px solid var(--green);
+            background: var(--green); color: var(--text-dark);
             font: 500 1rem 'Work Sans', sans-serif; text-decoration: none; cursor: pointer;
         }
-        .btn:hover { background: #3F6417; border-color: #3F6417; }
-        .btn.ghost { background: var(--white); color: var(--green-ink); }
+        .btn:hover { background: #A3C76C; border-color: #A3C76C; }
+        .btn.ghost { background: var(--white); color: var(--text-dark); }
         .btn.ghost:hover { background: var(--green-wash); }
         .btn.small { min-height: 40px; padding: 0 16px; font-size: 0.9rem; }
         .btn svg { flex: none; }
 
         /* Hero */
-        .hero { position: relative; padding: 40px 0 36px; overflow: hidden; }
-        .hero::before, .hero::after { content: ''; position: absolute; border-radius: 50%; background: var(--periwinkle); z-index: -1; }
-        .hero::before { width: 220px; height: 220px; top: -90px; right: -80px; opacity: 0.55; }
-        .hero::after { width: 120px; height: 120px; bottom: -50px; left: -50px; opacity: 0.35; }
+        .hero { position: relative; padding: 40px 0 36px; }
         .eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-ink); margin-bottom: 14px; }
         .hero h1 { font-size: clamp(2.5rem, 9vw, 4.25rem); margin-bottom: 16px; max-width: 14ch; }
-        .hero h1 em { font-style: normal; color: var(--green-ink); }
+        .hero h1 em { font-style: normal; }
         .hero p.lead { font-size: 1.08rem; color: var(--text-light); max-width: 56ch; margin-bottom: 24px; }
         .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
         .hero-actions .btn { flex: 1 1 150px; }
@@ -113,7 +110,7 @@
         .wins-list li::marker { color: var(--green-ink); }
         .feature-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
         .feature-actions .btn { flex: 1 1 140px; }
-        @media (hover: hover) { .feature { transition: border-color 0.2s, box-shadow 0.2s; } .feature:hover { border-color: var(--green-ink); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06); } }
+        @media (hover: hover) { .feature { transition: border-color 0.2s, box-shadow 0.2s; } .feature:hover { border-color: var(--green); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06); } }
         h3.beyond { font-size: 1.5rem; margin: 40px 0 14px; }
 
         .howto { font-size: 0.93rem; color: var(--text-light); max-width: 62ch; margin: -12px 0 20px; }
@@ -190,8 +187,8 @@
         .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .controls .btn { width: 100%; padding: 0 12px; }
         .btn:disabled { background: #E9E9EE; border-color: #E9E9EE; color: #77777F; cursor: not-allowed; }
-        .btn.estop { background: var(--fault); border-color: var(--fault); }
-        .btn.estop:hover { background: #963519; }
+        .btn.estop { background: var(--fault); border-color: var(--fault); color: var(--white); }
+        .btn.estop:hover { background: #963519; border-color: #963519; }
         .btn.estop[aria-pressed="true"] { box-shadow: inset 0 0 0 3px var(--white), 0 0 0 2px var(--fault); }
         .row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 10px; font-size: 0.9rem; }
         .seg-ctl { display: inline-flex; border: 1.5px solid #BDBDCC; border-radius: 999px; overflow: hidden; }
@@ -212,7 +209,7 @@
         /* Work */
         .work-grid { display: grid; gap: 12px; }
         .work-card { display: block; padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--white); text-decoration: none; color: inherit; }
-        .work-card:hover { border-color: var(--green-ink); }
+        .work-card:hover { border-color: var(--green); box-shadow: 0 0 0 1px var(--green); }
         .work-card .role { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-ink); }
         .work-card h3 { font-size: 1.45rem; margin: 6px 0 8px; }
         .work-card p { font-size: 0.95rem; color: var(--text-light); }
@@ -230,12 +227,12 @@
         .contact h2 { margin-bottom: 8px; }
         .contact-list { display: grid; gap: 10px; margin-top: 20px; }
         .contact-item { display: flex; align-items: center; gap: 14px; min-height: 60px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--white); text-decoration: none; color: var(--text-dark); }
-        .contact-item:hover { border-color: var(--green-ink); }
+        .contact-item:hover { border-color: var(--green); box-shadow: 0 0 0 1px var(--green); }
         .contact-item svg { flex: none; color: var(--green-ink); }
         .contact-item small { display: block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-light); }
         .contact-item b { font-weight: 500; overflow-wrap: anywhere; }
-        .contact-item.primary { background: var(--green-ink); border-color: var(--green-ink); color: var(--white); }
-        .contact-item.primary svg, .contact-item.primary small { color: var(--white); }
+        .contact-item.primary { background: var(--green); border-color: var(--green); color: var(--text-dark); }
+        .contact-item.primary svg, .contact-item.primary small { color: var(--text-dark); }
 
         footer { padding: 24px 0; font-size: 0.85rem; color: var(--text-light); }
         .footer-content { display: flex; flex-wrap: wrap; gap: 4px 16px; justify-content: space-between; }
@@ -259,7 +256,6 @@
             .container { padding: 0 32px; }
             .header-content { height: 68px; }
             .hero { padding: 80px 0 56px; }
-            .hero::before { width: 380px; height: 380px; top: -140px; right: -100px; }
             .hero-actions .btn { flex: 0 0 auto; }
             .facts { grid-template-columns: repeat(4, 1fr); margin-top: 48px; }
             .section { padding: 72px 0; }
@@ -289,7 +285,7 @@
                         <li><a href="#demo">Demo</a></li>
                         <li><a href="projects.html">Projects</a></li>
                         <li class="desk"><a href="#contact">Contact</a></li>
-                        <li class="desk"><a href="resume.pdf" target="_blank" rel="noopener" class="btn small" style="color:#fff">Résumé</a></li>
+                        <li class="desk"><a href="resume.pdf" target="_blank" rel="noopener" class="btn small">Résumé</a></li>
                     </ul>
                 </nav>
             </div>
@@ -515,6 +511,7 @@
         <a class="btn ghost" href="https://linkedin.com/in/arrianaf" target="_blank" rel="noopener">LinkedIn</a>
     </div>
 
+    <script src="fx.js"></script>
     <script>
     // ========== BLOCK SYSTEM DEMO ==========
     // Five blocks in a loop. Each block ends at a stopping device (station brakes, lift,

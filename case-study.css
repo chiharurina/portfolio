@@ -19,9 +19,9 @@ nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 
 nav a:hover { color: var(--green-ink); }
 nav .desk { display: none; }
 
-.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 999px; border: 2px solid var(--green-ink); background: var(--green-ink); color: var(--white); font: 500 1rem 'Work Sans', sans-serif; text-decoration: none; cursor: pointer; }
-.btn:hover { background: #3F6417; border-color: #3F6417; }
-.btn.ghost { background: var(--white); color: var(--green-ink); }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 999px; border: 2px solid var(--green); background: var(--green); color: var(--text-dark); font: 500 1rem 'Work Sans', sans-serif; text-decoration: none; cursor: pointer; }
+.btn:hover { background: #A3C76C; border-color: #A3C76C; }
+.btn.ghost { background: var(--white); color: var(--text-dark); }
 .btn.ghost:hover { background: var(--green-wash); }
 .btn.small { min-height: 40px; padding: 0 16px; font-size: 0.9rem; }
 
