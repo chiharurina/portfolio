@@ -7,7 +7,7 @@
     <meta name="description" content="Arriana Flores. Ride controls, show control and animatronics. Electrical and Computer Engineering at Cal Poly Pomona.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --green: #B3D380;
@@ -75,8 +75,11 @@
         /* Hero */
         .hero { position: relative; padding: 40px 0 36px; }
         .eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-ink); margin-bottom: 14px; }
-        .hero h1 { font-size: clamp(2.5rem, 9vw, 4.25rem); margin-bottom: 16px; max-width: 14ch; }
-        .hero h1 em { font-style: normal; }
+        .hero h1 { font-size: clamp(2.7rem, 9.5vw, 4.6rem); font-weight: 300; letter-spacing: -0.02em; margin-bottom: 16px; max-width: 16ch; }
+        .hero h1 em { font-style: normal; font-weight: 400; color: var(--green); }
+        .hero h1 { min-height: 3.3em; }
+        #hero-line { display: block; transition: opacity 0.45s ease; }
+        #hero-line.out { opacity: 0; }
         .hero p.lead { font-size: 1.08rem; color: var(--text-light); max-width: 56ch; margin-bottom: 24px; }
         .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
         .hero-actions .btn { flex: 1 1 150px; }
@@ -126,7 +129,7 @@
         /* Sections */
         .section { padding: 48px 0; }
         .section.tint { background: var(--off-white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-        .section h2 { font-size: clamp(1.9rem, 6vw, 2.6rem); margin-bottom: 8px; }
+        .section h2 { font-size: clamp(1.9rem, 6vw, 2.6rem); font-weight: 400; margin-bottom: 8px; }
         .section .sub { color: var(--text-light); max-width: 62ch; margin-bottom: 24px; }
 
         /* ===== Block system demo ===== */
@@ -296,8 +299,8 @@
         <section class="hero">
             <div class="container">
                 <p class="eyebrow">Ride and Show Engineering</p>
-                <h1>Engineering the <em>magic</em> behind the show</h1>
-                <p class="lead">Electrical &amp; Computer Engineering student focused on show control, animatronics, and interactive systems.</p>
+                <h1 aria-label="Engineering the magic behind the show"><span aria-hidden="true" id="hero-line">Engineering the <em>magic</em> behind the show</span></h1>
+                <p class="lead">Electrical &amp; Computer Engineering student with a Theater minor, focused on show control, animatronics, and interactive systems.</p>
                 <div class="hero-actions">
                     <a href="#work" class="btn">Explore My Work</a>
                     <a href="resume.pdf" target="_blank" rel="noopener" class="btn ghost">View Résumé</a>
@@ -801,6 +804,26 @@
 
         if (window.matchMedia('(min-width: 980px)').matches) $('bs-logbox').open = true;
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) $('bs-auto').checked = false;
+
+        // Hero: the headline switches to another line about me every 3 seconds.
+        // Edit this list to change the lines. <em> marks the green word.
+        (() => {
+            const el = $('hero-line');
+            if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            const lines = [
+                'Engineering the <em>magic</em> behind the show',
+                'Programming the <em>cues</em> that run the show',
+                'Building <em>animatronics</em> that come alive',
+                'Designing <em>controls</em> that keep rides safe',
+                'Bringing <em>theater</em> into engineering'
+            ];
+            let i = 0;
+            setInterval(() => {
+                if (document.hidden) return;
+                el.classList.add('out');
+                setTimeout(() => { i = (i + 1) % lines.length; el.innerHTML = lines[i]; el.classList.remove('out'); }, 450);
+            }, 3000);
+        })();
 
         // Featured card photos
         document.querySelectorAll('.feature-media').forEach(m => {
