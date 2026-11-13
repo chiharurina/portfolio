@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Rose Parade Float Show Control | Arriana Flores</title>
+    <meta name="description" content="Case study: show control and hydraulic animation for the Cal Poly Universities Rose Float.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="case-study.css">
+</head>
+<body>
+    <div class="draft-banner">Draft view. Red dashed boxes are notes to you and never show to visitors. Remove ?draft from the address to see the public page.</div>
+    <header class="site">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Arriana Flores</a>
+                <nav aria-label="Main">
+                    <ul>
+                        <li><a href="index.html#work">Work</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li class="desk"><a href="index.html#contact">Contact</a></li>
+                        <li class="desk"><a href="resume.pdf" target="_blank" rel="noopener" class="btn small" style="color:#fff">Résumé</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="cs-hero">
+                <a class="back" href="index.html#work">&larr; Selected work</a>
+                <p class="eyebrow">Show Control · Hydraulic Animation</p>
+                <h1>Rose Parade Float Show Control</h1>
+                <p class="lead">Show control for a Tournament of Roses Parade float: custom software, Gilderfluke controllers, and hydraulic animation that runs for hours on its own.</p>
+
+                <!-- HERO MEDIA: put a photo or .mp4 path in data-src (and a poster image for video in data-poster) -->
+                <div class="hero-media" data-src="" data-poster="" data-alt="Cal Poly Universities Rose Float animation"></div>
+                <div class="draft-only todo"><b>Hero media needed.</b> Best choice: a short clip of the animated mechanism moving. Set <code>data-src</code> on the hero-media element.</div>
+
+                <div class="meta">
+                    <div><small>Role</small><b>Show control team member</b></div>
+                    <div><small>Timeline</small><b>July 2026 to present</b></div>
+                    <div><small>Team</small><b>Cal Poly Universities Rose Float</b></div>
+                    <div><small>Key result</small><b>7+ hr standalone</b></div>
+                </div>
+            </section>
+
+            <section class="cs-section">
+                <h2>Overview</h2>
+                <p>The Cal Poly Universities Rose Float is a student-built entry in the Tournament of Roses Parade. I work on show control: the system that drives the float's hydraulic animation and audio.</p>
+                <div class="wins">
+                    <div class="win"><b>7+ hr</b><span>continuous standalone runtime</span></div>
+                    <div class="win"><b>1</b><span>unified system for controllers and audio</span></div>
+                </div>
+            </section>
+
+            <section class="cs-section">
+                <h2>My role</h2>
+                <ul>
+                    <li>Developed a custom show control program in PowerShell and JavaScript.</li>
+                    <li>Integrated Gilderfluke show controllers and audio repeaters into one unified system.</li>
+                    <li>Programmed hydraulic animation sequences in Gilderfluke PC-MACs.</li>
+                    <li>Tuned hydraulic pressures for smooth, repeatable motion.</li>
+                    <li>Engineered standalone operation for animation and audio.</li>
+                </ul>
+                <div class="draft-only todo"><b>To write:</b> One sentence on team size and which parts were yours alone versus shared with the show control team.</div>
+            </section>
+
+            <section class="cs-section">
+                <h2>System architecture</h2>
+                <p>A custom program ties the Gilderfluke show controllers and the audio repeaters together so animation and audio run as one show. The float can also run on its own, without the main show control box.</p>
+                <div class="arch" role="img" aria-label="Simplified architecture: custom show control program, Gilderfluke show controllers and audio repeaters, then hydraulic animation and float audio.">
+                    <div class="layer"><div class="node"><b>Custom show control program</b><span>PowerShell and JavaScript</span></div></div>
+                    <div class="link"></div>
+                    <div class="layer">
+                        <div class="node"><b>Gilderfluke show controllers</b><span>sequences built in PC-MACs</span></div>
+                        <div class="node"><b>Audio repeaters</b></div>
+                    </div>
+                    <div class="link"></div>
+                    <div class="layer">
+                        <div class="node"><b>Hydraulic animation</b><span>pressures tuned for smooth motion</span></div>
+                        <div class="node"><b>Float audio</b></div>
+                    </div>
+                </div>
+                <p class="caption">Simplified illustration of the layers, not a wiring diagram.</p>
+                <div class="draft-only todo"><b>To write:</b> Confirm this sketch against the real system, then add what the custom program actually does (start, stop, sync, monitoring) and how standalone mode takes over.</div>
+            </section>
+
+            <section class="cs-section">
+                <h2>Results</h2>
+                <ul>
+                    <li>Animation and audio ran for more than 7 hours continuously while disconnected from the main show control box.</li>
+                    <li>Hydraulic motion tuned to be smooth and repeatable.</li>
+                </ul>
+                <div class="tags"><span>Gilderfluke PC-MACs</span><span>PowerShell</span><span>JavaScript</span><span>Hydraulics</span><span>Audio repeaters</span></div>
+                <div class="draft-only todo"><b>To write:</b> How the 7+ hour figure was measured (test setup, date), and any failures you found and fixed during reliability testing.</div>
+            </section>
+
+            <section class="cs-section draft-only">
+                <h2>Engineering challenge</h2>
+                <div class="draft-only todo"><b>To write:</b> The hardest problem you solved on the float and how. For example: why standalone operation was needed and what made it difficult.</div>
+            </section>
+
+            <section class="cs-section draft-only">
+                <h2>Development process</h2>
+                <div class="draft-only todo"><b>To write:</b> From first sequence to parade-ready: programming, pressure tuning, integration, testing.</div>
+            </section>
+
+            <section class="cs-section draft-only">
+                <h2>Lessons learned</h2>
+                <div class="draft-only todo"><b>To write:</b> Two or three takeaways in your own words.</div>
+            </section>
+
+            <section class="cs-section" data-gallery>
+                <h2>Gallery</h2>
+                <div class="gallery">
+                    <figure class="media" data-src="" data-poster="" data-alt="Float animation in motion, short video"><figcaption>Float animation in motion, short video</figcaption></figure>
+                    <figure class="media" data-src="" data-poster="" data-alt="Behind the scenes: hydraulic system"><figcaption>Behind the scenes: hydraulic system</figcaption></figure>
+                    <figure class="media" data-src="" data-poster="" data-alt="Gilderfluke PC-MACs programming screen"><figcaption>Gilderfluke PC-MACs programming screen</figcaption></figure>
+                    <figure class="media" data-src="" data-poster="" data-alt="Show control hardware"><figcaption>Show control hardware</figcaption></figure>
+                </div>
+                <div class="draft-only todo"><b>Before publishing media:</b> confirm you have permission to share team and collaborative project photos, and keep each video short and compressed (under about 5 MB) so it loads on expo wifi.</div>
+            </section>
+
+
+            <section class="cs-section">
+                <h2>Want the details?</h2>
+                <p>I'm happy to walk through the design decisions, the wiring, or the code.</p>
+                <div class="next">
+                    <a class="btn" href="resume.pdf" target="_blank" rel="noopener">View résumé</a>
+                    <a class="btn ghost" href="mailto:arriana.f@outlook.com">Email me</a>
+                    <a class="btn ghost" href="index.html#demo">Next: ride controls demo</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer><div class="container"><p>© 2026 Arriana Flores · Cal Poly Pomona · Electrical and Computer Engineering</p></div></footer>
+
+    <div class="action-bar" role="navigation" aria-label="Quick contact">
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
+        <a class="btn ghost" href="mailto:arriana.f@outlook.com">Email</a>
+        <a class="btn ghost" href="https://linkedin.com/in/arrianaf" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+
+    <script>
+        // Draft view: add ?draft to the address to see your to-do notes and empty media slots.
+        if (new URLSearchParams(location.search).has('draft')) document.documentElement.classList.add('draft');
+
+        // Media slots: fill data-src with an image or .mp4 path. Empty slots stay hidden from visitors.
+        document.querySelectorAll('.hero-media, figure.media').forEach(slot => {
+            const src = (slot.dataset.src || '').trim();
+            if (!src) {
+                slot.classList.add('draft-only', 'todo');
+                slot.insertAdjacentHTML('afterbegin', '<b>Empty media slot:</b> ' + (slot.dataset.alt || ''));
+                if (slot.tagName === 'FIGURE') slot.querySelector('figcaption').remove();
+                return;
+            }
+            let m;
+            if (/\.(mp4|webm)$/i.test(src)) {
+                m = document.createElement('video');
+                m.controls = true; m.preload = 'none'; m.playsInline = true;
+                if (slot.dataset.poster) m.poster = slot.dataset.poster;
+                m.setAttribute('aria-label', slot.dataset.alt || '');
+            } else {
+                m = document.createElement('img');
+                m.alt = slot.dataset.alt || ''; m.loading = 'lazy';
+            }
+            m.src = src;
+            slot.prepend(m);
+        });
+        // Hide the gallery if every slot in it is empty
+        document.querySelectorAll('[data-gallery]').forEach(sec => {
+            if (!sec.querySelector('figure.media:not(.draft-only)')) sec.classList.add('draft-only');
+        });
+    </script>
+</body>
+</html>

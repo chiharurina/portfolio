@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Retro Rewind Escape Room | Arriana Flores</title>
+    <meta name="description" content="Case study: control architecture, animatronics and show control for a multi-room themed attraction.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="case-study.css">
+</head>
+<body>
+    <div class="draft-banner">Draft view. Red dashed boxes are notes to you and never show to visitors. Remove ?draft from the address to see the public page.</div>
+    <header class="site">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Arriana Flores</a>
+                <nav aria-label="Main">
+                    <ul>
+                        <li><a href="index.html#work">Work</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li class="desk"><a href="index.html#contact">Contact</a></li>
+                        <li class="desk"><a href="resume.pdf" target="_blank" rel="noopener" class="btn small" style="color:#fff">Résumé</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="cs-hero">
+                <a class="back" href="index.html#work">&larr; Selected work</a>
+                <p class="eyebrow">Show Control · Animatronics · Systems Integration</p>
+                <h1>Retro Rewind Escape Room</h1>
+                <p class="lead">A multi-room interactive attraction, opened on campus. I led the engineering: control architecture, animatronics, and the show system that runs it.</p>
+
+                <!-- HERO MEDIA: put a photo or .mp4 path in data-src (and a poster image for video in data-poster) -->
+                <div class="hero-media" data-src="" data-poster="" data-alt="Retro Rewind Escape Room, finished attraction"></div>
+                <div class="draft-only todo"><b>Hero media needed.</b> Best choice: a 10 second clip or a wide photo of the finished room with effects running. Set <code>data-src</code> on the hero-media element.</div>
+
+                <div class="meta">
+                    <div><small>Role</small><b>Engineering Chief</b></div>
+                    <div><small>Timeline</small><b>May 2025 to present</b></div>
+                    <div><small>Team</small><b>About 50 members</b></div>
+                    <div><small>Status</small><b>Opened on campus</b></div>
+                </div>
+            </section>
+
+            <section class="cs-section">
+                <h2>Overview</h2>
+                <p>Retro Rewind is a multi-room themed escape experience built like a mini attraction: animatronic characters, synchronized lighting and sound cues, and a central show control system tying every room together. A student team of about 50 designed it, built it, and opened it on campus.</p>
+                <div class="wins">
+                    <div class="win"><b>~50</b><span>team members led</span></div>
+                    <div class="win"><b>10+</b><span>ESP32 devices on the show network</span></div>
+                    <div class="win"><b>12</b><span>presence sensors</span></div>
+                    <div class="win"><b>3</b><span>animatronic figures</span></div>
+                </div>
+            </section>
+
+            <section class="cs-section">
+                <h2>My role</h2>
+                <p>As Engineering Chief I owned the technical side of the attraction from concept to opening.</p>
+                <ul>
+                    <li>Led about 50 members through design, build and opening of a multi-room attraction.</li>
+                    <li>Coordinated outside vendors and took the electrical, animatronic and puzzle plans through fire marshal review.</li>
+                    <li>Designed the control architecture that runs every room.</li>
+                    <li>Designed and prototyped the animatronic figures.</li>
+                </ul>
+                <div class="draft-only todo"><b>To write:</b> One or two sentences that separate what you personally designed or built from what sub-teams delivered. Recruiters ask this first.</div>
+            </section>
+
+            <section class="cs-section">
+                <h2>System architecture</h2>
+                <p>The show runs from a custom game master server. An AutomationDirect PLC and more than ten ESP32 devices share one MQTT network, and together they drive the animatronics, lighting and audio and read twelve presence sensors.</p>
+                <div class="arch" role="img" aria-label="Simplified architecture: game master server, MQTT network, PLC and ESP32 devices, then animatronics, lighting, audio and presence sensors.">
+                    <div class="layer"><div class="node"><b>Game master server</b><span>custom operator interface</span></div></div>
+                    <div class="link"></div>
+                    <div class="layer"><div class="node bus"><b>MQTT network</b><span>shared messaging between devices</span></div></div>
+                    <div class="link"></div>
+                    <div class="layer">
+                        <div class="node"><b>AutomationDirect PLC</b><span>show control</span></div>
+                        <div class="node"><b>10+ ESP32 devices</b><span>room and effect controllers</span></div>
+                    </div>
+                    <div class="link"></div>
+                    <div class="layer">
+                        <div class="node"><b>Animatronics</b></div>
+                        <div class="node"><b>Lighting</b></div>
+                        <div class="node"><b>Audio</b></div>
+                        <div class="node"><b>12 presence sensors</b></div>
+                    </div>
+                </div>
+                <p class="caption">Simplified illustration of the layers, not a wiring diagram.</p>
+                <div class="draft-only todo"><b>To write:</b> Replace this sketch with the real signal flow once you confirm it (which devices talk through the PLC, which talk straight to the game master, and where MQTT versus other links are used). Also add: how a sensor trigger becomes a lighting, audio or animatronic cue.</div>
+            </section>
+
+            <section class="cs-section">
+                <h2>Technical contributions</h2>
+                <ul>
+                    <li><b>Control architecture.</b> Designed the system around an AutomationDirect PLC and 10+ ESP32 devices communicating over MQTT.</li>
+                    <li><b>Game master interface.</b> Designed and built the custom web page the game master uses to monitor and run the rooms in real time.</li>
+                    <li><b>Custom control board.</b> Co-designed a custom PCB for the show with a teammate. Power delivery was simulated in LTspice before layout.</li>
+                    <li><b>Animatronic figures.</b> Designed three characters in Fusion 360 and Maya using marionette principles, and reached fluid motion through iterative prototyping and 3D printing.</li>
+                    <li><b>Cue documentation.</b> Wrote the lighting and sound cue documentation that keeps a multi-room show running on time.</li>
+                </ul>
+                <div class="tags"><span>AutomationDirect PLC</span><span>ESP32</span><span>MQTT</span><span>Fusion 360</span><span>Maya</span><span>3D printing</span><span>LTspice</span><span>JavaScript</span></div>
+            </section>
+
+            <section class="cs-section">
+                <h2>Engineering challenge</h2>
+                <p>The custom control board failed in the field. I traced the fault down to a damaged ESD protection diode and fixed it.</p>
+                <div class="draft-only todo"><b>To write:</b> Expand this into the story: what the symptom was, how you narrowed it down, what you measured, what you changed so it would not happen again. This is the strongest part of the page for an engineer reading it.</div>
+            </section>
+
+            <section class="cs-section draft-only">
+                <h2>Development process</h2>
+                <div class="draft-only todo"><b>To write:</b> Timeline from concept to opening: design reviews, prototyping rounds, fire marshal review, install, opening.</div>
+            </section>
+
+            <section class="cs-section">
+                <h2>Results</h2>
+                <ul>
+                    <li>The attraction opened on campus.</li>
+                    <li>Electrical, animatronic and puzzle plans passed fire marshal review.</li>
+                </ul>
+                <div class="draft-only todo"><b>To write:</b> Add what you can verify: number of guests or sessions run, uptime during operation, faults found in testing and fixed.</div>
+            </section>
+
+            <section class="cs-section draft-only">
+                <h2>Lessons learned</h2>
+                <div class="draft-only todo"><b>To write:</b> Two or three things you would do differently, in your own words.</div>
+            </section>
+
+            <section class="cs-section" data-gallery>
+                <h2>Gallery</h2>
+                <div class="gallery">
+                    <figure class="media" data-src="" data-poster="" data-alt="Finished attraction, wide shot or short walkthrough video"><figcaption>Finished attraction, wide shot or short walkthrough video</figcaption></figure>
+                    <figure class="media" data-src="" data-poster="" data-alt="Behind the scenes: electronics and mechanisms"><figcaption>Behind the scenes: electronics and mechanisms</figcaption></figure>
+                    <figure class="media" data-src="" data-poster="" data-alt="Wiring and control cabinet"><figcaption>Wiring and control cabinet</figcaption></figure>
+                    <figure class="media" data-src="" data-poster="" data-alt="Fusion 360 and Maya models"><figcaption>Fusion 360 and Maya models</figcaption></figure>
+                    <figure class="media" data-src="" data-poster="" data-alt="Animatronic prototypes and 3D printed parts"><figcaption>Animatronic prototypes and 3D printed parts</figcaption></figure>
+                    <figure class="media" data-src="" data-poster="" data-alt="Game master interface on screen"><figcaption>Game master interface on screen</figcaption></figure>
+                </div>
+                <div class="draft-only todo"><b>Before publishing media:</b> confirm you have permission to share team and collaborative project photos, and keep each video short and compressed (under about 5 MB) so it loads on expo wifi.</div>
+            </section>
+
+
+            <section class="cs-section">
+                <h2>Want the details?</h2>
+                <p>I'm happy to walk through the design decisions, the wiring, or the code.</p>
+                <div class="next">
+                    <a class="btn" href="resume.pdf" target="_blank" rel="noopener">View résumé</a>
+                    <a class="btn ghost" href="mailto:arriana.f@outlook.com">Email me</a>
+                    <a class="btn ghost" href="rose-float.html">Next: Rose Float</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer><div class="container"><p>© 2026 Arriana Flores · Cal Poly Pomona · Electrical and Computer Engineering</p></div></footer>
+
+    <div class="action-bar" role="navigation" aria-label="Quick contact">
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
+        <a class="btn ghost" href="mailto:arriana.f@outlook.com">Email</a>
+        <a class="btn ghost" href="https://linkedin.com/in/arrianaf" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+
+    <script>
+        // Draft view: add ?draft to the address to see your to-do notes and empty media slots.
+        if (new URLSearchParams(location.search).has('draft')) document.documentElement.classList.add('draft');
+
+        // Media slots: fill data-src with an image or .mp4 path. Empty slots stay hidden from visitors.
+        document.querySelectorAll('.hero-media, figure.media').forEach(slot => {
+            const src = (slot.dataset.src || '').trim();
+            if (!src) {
+                slot.classList.add('draft-only', 'todo');
+                slot.insertAdjacentHTML('afterbegin', '<b>Empty media slot:</b> ' + (slot.dataset.alt || ''));
+                if (slot.tagName === 'FIGURE') slot.querySelector('figcaption').remove();
+                return;
+            }
+            let m;
+            if (/\.(mp4|webm)$/i.test(src)) {
+                m = document.createElement('video');
+                m.controls = true; m.preload = 'none'; m.playsInline = true;
+                if (slot.dataset.poster) m.poster = slot.dataset.poster;
+                m.setAttribute('aria-label', slot.dataset.alt || '');
+            } else {
+                m = document.createElement('img');
+                m.alt = slot.dataset.alt || ''; m.loading = 'lazy';
+            }
+            m.src = src;
+            slot.prepend(m);
+        });
+        // Hide the gallery if every slot in it is empty
+        document.querySelectorAll('[data-gallery]').forEach(sec => {
+            if (!sec.querySelector('figure.media:not(.draft-only)')) sec.classList.add('draft-only');
+        });
+    </script>
+</body>
+</html>

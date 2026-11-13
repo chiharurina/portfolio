@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Natural Language Robotic Control | Arriana Flores</title>
+    <meta name="description" content="Case study: an LLM, PostgreSQL and ROS2 pipeline that turns plain-English commands into robot motion.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="case-study.css">
+</head>
+<body>
+    <div class="draft-banner">Draft view. Red dashed boxes are notes to you and never show to visitors. Remove ?draft from the address to see the public page.</div>
+    <header class="site">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Arriana Flores</a>
+                <nav aria-label="Main">
+                    <ul>
+                        <li><a href="index.html#work">Work</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li class="desk"><a href="index.html#contact">Contact</a></li>
+                        <li class="desk"><a href="resume.pdf" target="_blank" rel="noopener" class="btn small" style="color:#fff">Résumé</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="cs-hero">
+                <a class="back" href="index.html#work">&larr; Selected work</a>
+                <p class="eyebrow">Software · Robotics · Project Management</p>
+                <h1>Natural Language Robotic Control</h1>
+                <p class="lead">A robot that takes plain-English commands, built as one pipeline from language model to motion.</p>
+
+                <!-- HERO MEDIA: put a photo or .mp4 path in data-src (and a poster image for video in data-poster) -->
+                <div class="hero-media" data-src="" data-poster="" data-alt="Natural Language Robotic Control demo"></div>
+                <div class="draft-only todo"><b>Hero media needed.</b> Best choice: a short clip of the robot responding to a command. Set <code>data-src</code> on the hero-media element.</div>
+
+                <div class="meta">
+                    <div><small>Role</small><b>Project Manager</b></div>
+                    <div><small>Status</small><b>Completed</b></div>
+                    <div><small>Team</small><b>Multi-member team</b></div>
+                    <div><small>Key result</small><b>Under 1 s response</b></div>
+                </div>
+            </section>
+
+            <section class="cs-section">
+                <h2>Overview</h2>
+                <p>A modular framework that lets a robot take plain-English commands. An LLM, a database and ROS2 run as a single pipeline, built by a multi-member team that I managed end to end.</p>
+                <div class="wins">
+                    <div class="win"><b>&lt; 1 s</b><span>response for pre-mapped commands</span></div>
+                    <div class="win"><b>100%</b><span>accuracy on the tested pre-mapped commands</span></div>
+                </div>
+            </section>
+
+            <section class="cs-section">
+                <h2>My role</h2>
+                <ul>
+                    <li>Directed end-to-end development of the framework across a multi-member team.</li>
+                    <li>Integrated the LLM (Ollama), PostgreSQL and ROS2 into a single pipeline.</li>
+                    <li>Built a dual-interpreter command system in Python using Ollama and a rule-based fallback.</li>
+                    <li>Designed a PostgreSQL versioning schema that stores motion sequences as JSON and enables full rollback.</li>
+                </ul>
+                <div class="draft-only todo"><b>To write:</b> Team size and which parts you coded yourself versus managed.</div>
+            </section>
+
+            <section class="cs-section">
+                <h2>System architecture</h2>
+                <p>A typed command goes through two interpreters: an LLM and a rule-based fallback. The resulting motion sequence is stored with a version, then executed through ROS2.</p>
+                <div class="arch" role="img" aria-label="Simplified pipeline: plain-English command, dual interpreter with Ollama LLM and rule-based fallback, PostgreSQL versioned motion sequences, ROS2 execution.">
+                    <div class="layer"><div class="node"><b>Plain-English command</b></div></div>
+                    <div class="link"></div>
+                    <div class="layer">
+                        <div class="node"><b>LLM interpreter</b><span>Ollama</span></div>
+                        <div class="node"><b>Rule-based fallback</b><span>Python</span></div>
+                    </div>
+                    <div class="link"></div>
+                    <div class="layer"><div class="node bus"><b>PostgreSQL</b><span>motion sequences as JSON, versioned, full rollback</span></div></div>
+                    <div class="link"></div>
+                    <div class="layer"><div class="node"><b>ROS2</b><span>robot execution</span></div></div>
+                </div>
+                <p class="caption">Simplified illustration of the pipeline.</p>
+                <div class="draft-only todo"><b>To write:</b> Confirm the order of the stages, and say when the fallback takes over from the LLM.</div>
+            </section>
+
+            <section class="cs-section">
+                <h2>Results</h2>
+                <ul>
+                    <li>100% command accuracy with sub-1-second response time, measured on pre-mapped inputs.</li>
+                    <li>Any stored motion sequence can be rolled back to an earlier version.</li>
+                </ul>
+                <div class="tags"><span>Python</span><span>ROS2</span><span>Ollama</span><span>PostgreSQL</span><span>JSON</span></div>
+                <div class="draft-only todo"><b>To write:</b> How many pre-mapped commands were tested, and what happens with commands outside that set.</div>
+            </section>
+
+            <section class="cs-section">
+                <h2>Why it matters for show control</h2>
+                <p>Versioned motion sequences with rollback are the same idea as show programming: you need to change a cue, test it, and get back to the last good version quickly.</p>
+            </section>
+
+            <section class="cs-section draft-only">
+                <h2>Lessons learned</h2>
+                <div class="draft-only todo"><b>To write:</b> Two or three takeaways in your own words.</div>
+            </section>
+
+            <section class="cs-section" data-gallery>
+                <h2>Gallery</h2>
+                <div class="gallery">
+                    <figure class="media" data-src="" data-poster="" data-alt="Robot executing a spoken or typed command, short video"><figcaption>Robot executing a spoken or typed command, short video</figcaption></figure>
+                    <figure class="media" data-src="" data-poster="" data-alt="Pipeline diagram or terminal output"><figcaption>Pipeline diagram or terminal output</figcaption></figure>
+                </div>
+                <div class="draft-only todo"><b>Before publishing media:</b> confirm you have permission to share team and collaborative project photos, and keep each video short and compressed (under about 5 MB) so it loads on expo wifi.</div>
+            </section>
+
+
+            <section class="cs-section">
+                <h2>Want the details?</h2>
+                <p>I'm happy to walk through the design decisions, the wiring, or the code.</p>
+                <div class="next">
+                    <a class="btn" href="resume.pdf" target="_blank" rel="noopener">View résumé</a>
+                    <a class="btn ghost" href="mailto:arriana.f@outlook.com">Email me</a>
+                    <a class="btn ghost" href="index.html#work">Back to selected work</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer><div class="container"><p>© 2026 Arriana Flores · Cal Poly Pomona · Electrical and Computer Engineering</p></div></footer>
+
+    <div class="action-bar" role="navigation" aria-label="Quick contact">
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
+        <a class="btn ghost" href="mailto:arriana.f@outlook.com">Email</a>
+        <a class="btn ghost" href="https://linkedin.com/in/arrianaf" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+
+    <script>
+        // Draft view: add ?draft to the address to see your to-do notes and empty media slots.
+        if (new URLSearchParams(location.search).has('draft')) document.documentElement.classList.add('draft');
+
+        // Media slots: fill data-src with an image or .mp4 path. Empty slots stay hidden from visitors.
+        document.querySelectorAll('.hero-media, figure.media').forEach(slot => {
+            const src = (slot.dataset.src || '').trim();
+            if (!src) {
+                slot.classList.add('draft-only', 'todo');
+                slot.insertAdjacentHTML('afterbegin', '<b>Empty media slot:</b> ' + (slot.dataset.alt || ''));
+                if (slot.tagName === 'FIGURE') slot.querySelector('figcaption').remove();
+                return;
+            }
+            let m;
+            if (/\.(mp4|webm)$/i.test(src)) {
+                m = document.createElement('video');
+                m.controls = true; m.preload = 'none'; m.playsInline = true;
+                if (slot.dataset.poster) m.poster = slot.dataset.poster;
+                m.setAttribute('aria-label', slot.dataset.alt || '');
+            } else {
+                m = document.createElement('img');
+                m.alt = slot.dataset.alt || ''; m.loading = 'lazy';
+            }
+            m.src = src;
+            slot.prepend(m);
+        });
+        // Hide the gallery if every slot in it is empty
+        document.querySelectorAll('[data-gallery]').forEach(sec => {
+            if (!sec.querySelector('figure.media:not(.draft-only)')) sec.classList.add('draft-only');
+        });
+    </script>
+</body>
+</html>

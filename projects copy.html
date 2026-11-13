@@ -10,12 +10,13 @@
     <style>
         :root {
             --green: #B3D380;
+            --green-ink: #4E7A1E;
             --periwinkle: #CCCCFF;
             --white: #FFFFFF;
             --off-white: #FAFAFA;
             --light-gray: #F5F5F5;
             --text-dark: #2A2A2A;
-            --text-light: #6A6A6A;
+            --text-light: #5C5C5C;
         }
 
         * {
@@ -70,7 +71,7 @@
             font-family: 'Crimson Pro', serif;
             font-size: 1.5rem;
             font-weight: 600;
-            color: var(--green);
+            color: var(--green-ink);
             letter-spacing: -0.5px;
             text-decoration: none;
         }
@@ -92,7 +93,7 @@
 
         nav a:hover,
         nav a.active {
-            color: var(--green);
+            color: var(--green-ink);
         }
 
         /* Hero Section */
@@ -123,7 +124,7 @@
         }
 
         .hero h1 .accent {
-            color: var(--green);
+            color: var(--green-ink);
             font-weight: 400;
         }
 
@@ -159,9 +160,9 @@
 
         .filter-btn:hover,
         .filter-btn.active {
-            background: var(--green);
+            background: var(--green-ink);
             color: var(--white);
-            border-color: var(--green);
+            border-color: var(--green-ink);
         }
 
         /* Projects Grid */
@@ -227,7 +228,7 @@
         }
 
         .project-card:hover .project-image {
-            border-color: var(--green);
+            border-color: var(--green-ink);
         }
 
         .project-meta {
@@ -240,7 +241,7 @@
         .project-number {
             font-family: 'Crimson Pro', serif;
             font-size: 0.85rem;
-            color: var(--green);
+            color: var(--green-ink);
             font-weight: 400;
             letter-spacing: 1px;
         }
@@ -263,7 +264,7 @@
         }
 
         .project-card:hover h3 {
-            color: var(--green);
+            color: var(--green-ink);
         }
 
         .project-card p {
@@ -318,8 +319,8 @@
         }
 
         .tech-tag:hover {
-            border-color: var(--green);
-            color: var(--green);
+            border-color: var(--green-ink);
+            color: var(--green-ink);
         }
 
         .project-links {
@@ -341,15 +342,15 @@
         }
 
         .project-link:hover {
-            background: var(--green);
+            background: var(--green-ink);
             color: var(--white);
-            border-color: var(--green);
+            border-color: var(--green-ink);
         }
 
         .project-link.primary {
-            background: var(--green);
+            background: var(--green-ink);
             color: var(--white);
-            border-color: var(--green);
+            border-color: var(--green-ink);
         }
 
         .project-link.primary:hover {
@@ -373,7 +374,7 @@
         }
 
         .footer-content a {
-            color: var(--green);
+            color: var(--green-ink);
             text-decoration: none;
         }
 
@@ -419,12 +420,76 @@
             position: fixed;
             width: 8px;
             height: 8px;
-            background: var(--green);
+            background: var(--green-ink);
             border-radius: 50%;
             pointer-events: none;
             opacity: 0;
             z-index: 9999;
             transition: opacity 0.3s;
+        }
+
+        .project-card { scroll-margin-top: 180px; }
+        .project-card:target h3 { color: var(--green-ink); }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        button.project-link {
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .project-links:empty { display: none; }
+
+        /* Photo lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 20, 20, 0.92);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            padding: 4rem 1rem 3rem;
+        }
+
+        .lightbox.open { display: flex; }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .lightbox-btn {
+            position: absolute;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2.5rem;
+            line-height: 1;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            min-width: 44px;
+            min-height: 44px;
+        }
+
+        .lightbox-close { top: 0.5rem; right: 0.5rem; }
+        .lightbox-prev { left: 0.25rem; top: 50%; transform: translateY(-50%); }
+        .lightbox-next { right: 0.25rem; top: 50%; transform: translateY(-50%); }
+
+        .lightbox-count {
+            position: absolute;
+            bottom: 1rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #ccc;
+            font-size: 0.9rem;
         }
 
         /* Responsive */
@@ -477,6 +542,8 @@
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="projects.html" class="active">Projects</a></li>
+                        <li><a href="index.html#demo">Demo</a></li>
+                        <li><a href="resume.pdf" target="_blank" rel="noopener">Résumé</a></li>
                         <li><a href="index.html#contact">Contact</a></li>
                     </ul>
                 </nav>
@@ -506,7 +573,7 @@
 
                 <div class="projects-grid">
                     <!-- Project 01 -->
-                    <div class="project-card" data-category="show">
+                    <div class="project-card" id="project-01" data-category="show" data-photos="" data-details="rose-float.html">
                         <div class="project-image">
                             <div class="project-image-placeholder">01</div>
                         </div>
@@ -540,13 +607,13 @@
                         </div>
 
                         <div class="project-links">
-                            <a href="#" class="project-link primary">View Details</a>
-                            <a href="#" class="project-link">Photos</a>
+                            <a href="#" class="project-link primary" data-link="details">View Details</a>
+                            <button type="button" class="project-link" data-link="photos">Photos</button>
                         </div>
                     </div>
 
                     <!-- Project 02 -->
-                    <div class="project-card" data-category="show">
+                    <div class="project-card" id="project-02" data-category="show" data-photos="" data-details="escape-room.html">
                         <div class="project-image">
                             <div class="project-image-placeholder">02</div>
                         </div>
@@ -560,11 +627,11 @@
                         <div class="project-details">
                             <div class="detail-item">
                                 <span class="detail-label">Role:</span>
-                                <span class="detail-value">Systems &amp; controls lead</span>
+                                <span class="detail-value">Engineering Chief</span>
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Status:</span>
-                                <span class="detail-value">In development</span>
+                                <span class="detail-value">Opened on campus</span>
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Scope:</span>
@@ -575,18 +642,18 @@
                         <div class="tech-stack">
                             <span class="tech-tag">Productivity P1-550 PLC</span>
                             <span class="tech-tag">ESP32</span>
-                            <span class="tech-tag">Modbus</span>
+                            <span class="tech-tag">MQTT</span>
                             <span class="tech-tag">Lighting &amp; Sound Cues</span>
                         </div>
 
                         <div class="project-links">
-                            <a href="#" class="project-link primary">View Details</a>
-                            <a href="#" class="project-link">Photos</a>
+                            <a href="#" class="project-link primary" data-link="details">View Details</a>
+                            <button type="button" class="project-link" data-link="photos">Photos</button>
                         </div>
                     </div>
 
                     <!-- Project 03 -->
-                    <div class="project-card" data-category="show">
+                    <div class="project-card" id="project-03" data-category="show" data-photos="" data-details="">
                         <div class="project-image">
                             <div class="project-image-placeholder">03</div>
                         </div>
@@ -620,13 +687,13 @@
                         </div>
 
                         <div class="project-links">
-                            <a href="#" class="project-link primary">View Details</a>
-                            <a href="#" class="project-link">Photos</a>
+                            <a href="#" class="project-link primary" data-link="details">View Details</a>
+                            <button type="button" class="project-link" data-link="photos">Photos</button>
                         </div>
                     </div>
 
                     <!-- Project 04 -->
-                    <div class="project-card" data-category="ride">
+                    <div class="project-card" id="project-04" data-category="ride" data-photos="" data-details="index.html#demo">
                         <div class="project-image">
                             <div class="project-image-placeholder">04</div>
                         </div>
@@ -660,13 +727,13 @@
                         </div>
 
                         <div class="project-links">
-                            <a href="#" class="project-link primary">View Details</a>
-                            <a href="#" class="project-link">Photos</a>
+                            <a href="#" class="project-link primary" data-link="details">Try the simulator</a>
+                            <button type="button" class="project-link" data-link="photos">Photos</button>
                         </div>
                     </div>
 
                     <!-- Project 05 -->
-                    <div class="project-card" data-category="hardware">
+                    <div class="project-card" id="project-05" data-category="hardware" data-photos="" data-details="">
                         <div class="project-image">
                             <div class="project-image-placeholder">05</div>
                         </div>
@@ -700,13 +767,13 @@
                         </div>
 
                         <div class="project-links">
-                            <a href="#" class="project-link primary">View Details</a>
-                            <a href="#" class="project-link">Photos</a>
+                            <a href="#" class="project-link primary" data-link="details">View Details</a>
+                            <button type="button" class="project-link" data-link="photos">Photos</button>
                         </div>
                     </div>
 
                     <!-- Project 06 -->
-                    <div class="project-card" data-category="software">
+                    <div class="project-card" id="project-06" data-category="software" data-photos="" data-details="nl-robotics.html">
                         <div class="project-image">
                             <div class="project-image-placeholder">06</div>
                         </div>
@@ -741,13 +808,13 @@
                         </div>
 
                         <div class="project-links">
-                            <a href="#" class="project-link primary">View Details</a>
-                            <a href="#" class="project-link">Photos</a>
+                            <a href="#" class="project-link primary" data-link="details">View Details</a>
+                            <button type="button" class="project-link" data-link="photos">Photos</button>
                         </div>
                     </div>
 
                     <!-- Project 07 -->
-                    <div class="project-card" data-category="software">
+                    <div class="project-card" id="project-07" data-category="software" data-photos="" data-details="">
                         <div class="project-image">
                             <div class="project-image-placeholder">07</div>
                         </div>
@@ -765,7 +832,7 @@
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Status:</span>
-                                <span class="detail-value">Complete</span>
+                                <span class="detail-value">Completed</span>
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Scope:</span>
@@ -781,13 +848,13 @@
                         </div>
 
                         <div class="project-links">
-                            <a href="#" class="project-link primary">View Details</a>
-                            <a href="#" class="project-link">Photos</a>
+                            <a href="#" class="project-link primary" data-link="details">View Details</a>
+                            <button type="button" class="project-link" data-link="photos">Photos</button>
                         </div>
                     </div>
 
                     <!-- Project 08 -->
-                    <div class="project-card" data-category="hardware">
+                    <div class="project-card" id="project-08" data-category="hardware" data-photos="" data-details="ngcp-uav.html">
                         <div class="project-image">
                             <div class="project-image-placeholder">08</div>
                         </div>
@@ -801,7 +868,7 @@
                         <div class="project-details">
                             <div class="detail-item">
                                 <span class="detail-label">Role:</span>
-                                <span class="detail-value">Electrical Lead</span>
+                                <span class="detail-value">Team Lead</span>
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Status:</span>
@@ -823,13 +890,13 @@
                         </div>
 
                         <div class="project-links">
-                            <a href="#" class="project-link primary">View Details</a>
-                            <a href="#" class="project-link">Photos</a>
+                            <a href="#" class="project-link primary" data-link="details">View Details</a>
+                            <button type="button" class="project-link" data-link="photos">Photos</button>
                         </div>
                     </div>
 
                     <!-- Project 09 -->
-                    <div class="project-card" data-category="hardware">
+                    <div class="project-card" id="project-09" data-category="hardware" data-photos="" data-details="">
                         <div class="project-image">
                             <div class="project-image-placeholder">09</div>
                         </div>
@@ -843,7 +910,7 @@
                         <div class="project-details">
                             <div class="detail-item">
                                 <span class="detail-label">Role:</span>
-                                <span class="detail-value">Electrical Lead</span>
+                                <span class="detail-value">Team Lead</span>
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Status:</span>
@@ -863,13 +930,13 @@
                         </div>
 
                         <div class="project-links">
-                            <a href="#" class="project-link primary">View Details</a>
-                            <a href="#" class="project-link">Photos</a>
+                            <a href="#" class="project-link primary" data-link="details">View Details</a>
+                            <button type="button" class="project-link" data-link="photos">Photos</button>
                         </div>
                     </div>
 
                     <!-- Project 10 -->
-                    <div class="project-card" data-category="leadership">
+                    <div class="project-card" id="project-10" data-category="leadership" data-photos="" data-details="">
                         <div class="project-image">
                             <div class="project-image-placeholder">10</div>
                         </div>
@@ -903,13 +970,13 @@
                         </div>
 
                         <div class="project-links">
-                            <a href="#" class="project-link primary">View Details</a>
-                            <a href="#" class="project-link">Photos</a>
+                            <a href="#" class="project-link primary" data-link="details">View Details</a>
+                            <button type="button" class="project-link" data-link="photos">Photos</button>
                         </div>
                     </div>
 
                     <!-- Project 11 -->
-                    <div class="project-card" data-category="av">
+                    <div class="project-card" id="project-11" data-category="av" data-photos="" data-details="">
                         <div class="project-image">
                             <div class="project-image-placeholder">11</div>
                         </div>
@@ -943,13 +1010,13 @@
                         </div>
 
                         <div class="project-links">
-                            <a href="#" class="project-link primary">View Details</a>
-                            <a href="#" class="project-link">Photos</a>
+                            <a href="#" class="project-link primary" data-link="details">View Details</a>
+                            <button type="button" class="project-link" data-link="photos">Photos</button>
                         </div>
                     </div>
 
                     <!-- Project 12 -->
-                    <div class="project-card" data-category="av">
+                    <div class="project-card" id="project-12" data-category="av" data-photos="" data-details="">
                         <div class="project-image">
                             <div class="project-image-placeholder">12</div>
                         </div>
@@ -967,7 +1034,7 @@
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Status:</span>
-                                <span class="detail-value">Complete</span>
+                                <span class="detail-value">Completed</span>
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Scope:</span>
@@ -982,13 +1049,13 @@
                         </div>
 
                         <div class="project-links">
-                            <a href="#" class="project-link primary">View Details</a>
-                            <a href="#" class="project-link">Photos</a>
+                            <a href="#" class="project-link primary" data-link="details">View Details</a>
+                            <button type="button" class="project-link" data-link="photos">Photos</button>
                         </div>
                     </div>
 
                     <!-- Project 13 -->
-                    <div class="project-card" data-category="software">
+                    <div class="project-card" id="project-13" data-category="software" data-photos="" data-details="">
                         <div class="project-image">
                             <div class="project-image-placeholder">13</div>
                         </div>
@@ -1021,8 +1088,8 @@
                         </div>
 
                         <div class="project-links">
-                            <a href="#" class="project-link primary">View Details</a>
-                            <a href="#" class="project-link">Photos</a>
+                            <a href="#" class="project-link primary" data-link="details">View Details</a>
+                            <button type="button" class="project-link" data-link="photos">Photos</button>
                         </div>
                     </div>
 
@@ -1035,7 +1102,7 @@
         <div class="container">
             <div class="footer-content">
                 <p>© 2026 Arriana Flores</p>
-                <p><a href="index.html">Back to Home</a></p>
+                <p class="footer-links"><a href="resume.pdf" target="_blank" rel="noopener">Résumé</a> · <a href="mailto:arriana.f@outlook.com">arriana.f@outlook.com</a> · <a href="https://linkedin.com/in/arrianaf" target="_blank" rel="noopener">LinkedIn</a> · <a href="index.html">Home</a></p>
             </div>
         </div>
     </footer>
@@ -1147,6 +1214,86 @@
             }, 300);
             
             currentTrail = (currentTrail + 1) % maxTrails;
+        });
+    </script>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project photos">
+        <button type="button" class="lightbox-btn lightbox-close" aria-label="Close">&times;</button>
+        <button type="button" class="lightbox-btn lightbox-prev" aria-label="Previous photo">&#8249;</button>
+        <img src="" alt="">
+        <button type="button" class="lightbox-btn lightbox-next" aria-label="Next photo">&#8250;</button>
+        <div class="lightbox-count"></div>
+    </div>
+
+    <script>
+        // ========== PHOTOS + DETAILS ==========
+        // To add photos to a project, list image paths on its card, comma separated:
+        //   data-photos="images/rose-float-1.jpg, images/rose-float-2.jpg"
+        // The first photo becomes the card image. Cards with no photos hide the Photos button.
+        // To add a details page or link, set data-details="rose-float.html" (or any URL).
+        // Cards with no details link hide the View Details button.
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = lightbox.querySelector('img');
+        const lbCount = lightbox.querySelector('.lightbox-count');
+        let lbPhotos = [], lbIndex = 0, lbAlt = '';
+
+        const showPhoto = () => {
+            lbImg.src = lbPhotos[lbIndex];
+            lbImg.alt = `${lbAlt}, photo ${lbIndex + 1} of ${lbPhotos.length}`;
+            lbCount.textContent = lbPhotos.length > 1 ? `${lbIndex + 1} / ${lbPhotos.length}` : '';
+            const multi = lbPhotos.length > 1;
+            lightbox.querySelector('.lightbox-prev').style.display = multi ? '' : 'none';
+            lightbox.querySelector('.lightbox-next').style.display = multi ? '' : 'none';
+        };
+        const openLightbox = (photos, title, start = 0) => {
+            lbPhotos = photos; lbIndex = start; lbAlt = title;
+            showPhoto();
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            lightbox.querySelector('.lightbox-close').focus();
+        };
+        const closeLightbox = () => {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        };
+        const step = (d) => { lbIndex = (lbIndex + d + lbPhotos.length) % lbPhotos.length; showPhoto(); };
+
+        lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+        lightbox.querySelector('.lightbox-prev').addEventListener('click', () => step(-1));
+        lightbox.querySelector('.lightbox-next').addEventListener('click', () => step(1));
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        lightbox.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') step(-1);
+            if (e.key === 'ArrowRight') step(1);
+        });
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            const title = card.querySelector('h3').textContent;
+            const photos = (card.dataset.photos || '').split(',').map(p => p.trim()).filter(Boolean);
+            const details = (card.dataset.details || '').trim();
+            const photoBtn = card.querySelector('[data-link="photos"]');
+            const detailLink = card.querySelector('[data-link="details"]');
+
+            if (photos.length) {
+                const img = document.createElement('img');
+                img.src = photos[0];
+                img.alt = title;
+                img.loading = 'lazy';
+                card.querySelector('.project-image').replaceChildren(img);
+                photoBtn.textContent = photos.length > 1 ? `Photos (${photos.length})` : 'Photo';
+                photoBtn.addEventListener('click', () => openLightbox(photos, title));
+                card.querySelector('.project-image').addEventListener('click', () => openLightbox(photos, title));
+            } else {
+                photoBtn.remove();
+            }
+
+            if (details) {
+                detailLink.href = details;
+            } else {
+                detailLink.remove();
+            }
+            const links = card.querySelector('.project-links');
+            if (!links.querySelector('a, button')) links.remove();
         });
     </script>
 </body>

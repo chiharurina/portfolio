@@ -2,772 +2,499 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arriana Flores | Themed Entertainment Engineering</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Arriana Flores | Ride and Show Engineering</title>
+    <meta name="description" content="Arriana Flores. Ride controls, show control and animatronics. Electrical and Computer Engineering at Cal Poly Pomona.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --green: #B3D380;
+            --green-ink: #4E7A1E;
+            --green-wash: #F1F7E6;
             --periwinkle: #CCCCFF;
+            --peri-ink: #4B4BB5;
+            --peri-wash: #F2F2FF;
+            --fault: #B3401F;
+            --fault-wash: #FBEDE8;
             --white: #FFFFFF;
             --off-white: #FAFAFA;
-            --light-gray: #F5F5F5;
+            --line: #E6E6EE;
             --text-dark: #2A2A2A;
-            --text-light: #6A6A6A;
+            --text-light: #5C5C5C;
+            --bar-h: 64px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Work Sans', sans-serif;
             background: var(--white);
             color: var(--text-dark);
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-x: hidden;
+            padding-bottom: calc(var(--bar-h) + env(safe-area-inset-bottom));
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 3rem;
-        }
+        a { color: var(--green-ink); }
+        h1, h2, h3 { font-family: 'Crimson Pro', serif; font-weight: 600; line-height: 1.1; letter-spacing: -0.01em; }
+        section { scroll-margin-top: 72px; }
+
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
 
         /* Header */
         header {
-            padding: 3rem 0;
-            border-bottom: 1px solid var(--periwinkle);
-            background: var(--white);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            animation: slideDown 0.6s ease-out;
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--line);
         }
+        .header-content { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 12px; }
+        .logo { font-family: 'Crimson Pro', serif; font-size: 1.35rem; font-weight: 600; color: var(--text-dark); text-decoration: none; white-space: nowrap; }
+        nav ul { display: flex; align-items: center; gap: 4px; list-style: none; }
+        nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px; color: var(--text-light); text-decoration: none; font-size: 0.95rem; }
+        nav a:hover { color: var(--green-ink); }
+        nav .desk { display: none; }
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Buttons */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            min-height: 48px; padding: 0 22px;
+            border-radius: 999px; border: 2px solid var(--green-ink);
+            background: var(--green-ink); color: var(--white);
+            font: 500 1rem 'Work Sans', sans-serif; text-decoration: none; cursor: pointer;
         }
+        .btn:hover { background: #3F6417; border-color: #3F6417; }
+        .btn.ghost { background: var(--white); color: var(--green-ink); }
+        .btn.ghost:hover { background: var(--green-wash); }
+        .btn.small { min-height: 40px; padding: 0 16px; font-size: 0.9rem; }
+        .btn svg { flex: none; }
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        /* Hero */
+        .hero { position: relative; padding: 40px 0 36px; overflow: hidden; }
+        .hero::before, .hero::after { content: ''; position: absolute; border-radius: 50%; background: var(--periwinkle); z-index: -1; }
+        .hero::before { width: 220px; height: 220px; top: -90px; right: -80px; opacity: 0.55; }
+        .hero::after { width: 120px; height: 120px; bottom: -50px; left: -50px; opacity: 0.35; }
+        .eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-ink); margin-bottom: 14px; }
+        .hero h1 { font-size: clamp(2.5rem, 9vw, 4.25rem); margin-bottom: 16px; max-width: 14ch; }
+        .hero h1 em { font-style: normal; color: var(--green-ink); }
+        .hero p.lead { font-size: 1.08rem; color: var(--text-light); max-width: 56ch; margin-bottom: 24px; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+        .hero-actions .btn { flex: 1 1 150px; }
 
-        .logo {
-            font-family: 'Crimson Pro', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--green);
-            letter-spacing: -0.5px;
-        }
+        .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; margin-top: 32px; }
+        .fact { padding: 14px 0; border-top: 2px solid var(--green); }
+        .fact b { display: block; font-family: 'Crimson Pro', serif; font-size: 2rem; font-weight: 600; line-height: 1.1; }
+        .fact span { font-size: 0.88rem; color: var(--text-light); }
 
-        nav ul {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-        }
+        .hero-links { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 14px; font-size: 0.95rem; }
+        .hero-links a { display: inline-flex; align-items: center; min-height: 44px; }
+        a.fact { display: block; text-decoration: none; color: inherit; }
+        a.fact:hover b { color: var(--green-ink); }
+        .fact small { display: block; margin-top: 2px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-ink); }
 
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 400;
-            transition: color 0.3s ease;
-            letter-spacing: 0.3px;
-        }
+        /* Featured projects */
+        .features { display: grid; gap: 16px; }
+        .feature { display: grid; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--white); }
+        .feature-media { position: relative; aspect-ratio: 16 / 9; background: var(--peri-wash); display: flex; align-items: flex-end; justify-content: space-between; padding: 14px 18px; overflow: hidden; }
+        .feature:nth-child(2) .feature-media { background: var(--green-wash); }
+        .feature-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .feature-media .num { font-family: 'Crimson Pro', serif; font-size: 4.5rem; font-weight: 600; line-height: 0.9; color: var(--text-dark); opacity: 0.18; }
+        .feature-media.has-photo .num { display: none; }
+        .feature-media .status { position: relative; padding: 4px 12px; border-radius: 999px; background: var(--white); border: 1px solid var(--line); font-size: 0.8rem; font-weight: 500; }
+        .feature-body { padding: 18px; }
+        .feature-body .role { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-ink); }
+        .feature-body h3 { font-size: 1.7rem; margin: 6px 0 8px; }
+        .feature-body p { color: var(--text-light); font-size: 0.97rem; }
+        .wins-list { margin: 10px 0 0; padding-left: 1.1em; font-size: 0.95rem; }
+        .wins-list li { margin-bottom: 4px; }
+        .wins-list li::marker { color: var(--green-ink); }
+        .feature-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+        .feature-actions .btn { flex: 1 1 140px; }
+        @media (hover: hover) { .feature { transition: border-color 0.2s, box-shadow 0.2s; } .feature:hover { border-color: var(--green-ink); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06); } }
+        h3.beyond { font-size: 1.5rem; margin: 40px 0 14px; }
 
-        nav a:hover,
-        nav a.active {
-            color: var(--green);
-        }
+        .howto { font-size: 0.93rem; color: var(--text-light); max-width: 62ch; margin: -12px 0 20px; }
+        .howto b { color: var(--text-dark); }
+        .dstate { margin: 0 0 8px; padding: 8px 12px; border-radius: 10px; font-size: 0.88rem; font-weight: 500; background: var(--green-wash); color: var(--green-ink); min-height: 3.6em; display: flex; align-items: center; }
+        .dstate.no { background: var(--fault-wash); color: var(--fault); }
+        .logbox { margin-top: 14px; }
+        .logbox summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; gap: 8px; font: 600 0.78rem 'Work Sans', sans-serif; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-light); }
+        .logbox summary::before { content: '+'; display: inline-block; width: 1em; font-size: 1.1rem; }
+        .logbox[open] summary::before { content: '−'; }
+        .logbox summary::-webkit-details-marker { display: none; }
 
-        /* Hero Section */
-        .hero {
-            padding: 10rem 0 8rem;
-            animation: fadeIn 0.8s ease-out 0.2s backwards;
-        }
+        /* Sections */
+        .section { padding: 48px 0; }
+        .section.tint { background: var(--off-white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+        .section h2 { font-size: clamp(1.9rem, 6vw, 2.6rem); margin-bottom: 8px; }
+        .section .sub { color: var(--text-light); max-width: 62ch; margin-bottom: 24px; }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* ===== Block system demo ===== */
+        .demo { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 14px; }
+        .demo-grid { display: grid; gap: 16px; }
+        .demo-grid > * { min-width: 0; }
+        @media (max-width: 979px) {
+            /* Keep the track in view while the controls scroll under it */
+            .demo-grid { gap: 8px; }
+            .demo-grid > div { display: contents; }
+            .track-wrap { position: sticky; top: 62px; z-index: 5; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08); }
         }
+        .demo h3 { font: 600 0.78rem 'Work Sans', sans-serif; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-light); margin-bottom: 8px; }
+        .track-wrap { background: var(--off-white); border: 1px solid var(--line); border-radius: 12px; padding: 6px; }
+        #bs-svg { display: block; width: 100%; height: auto; }
+        .seg { fill: none; stroke-width: 9; stroke-linecap: butt; stroke: var(--green); }
+        .seg.occ { stroke: var(--peri-ink); }
+        .seg.fault { stroke: var(--fault); }
+        .sig { stroke: var(--white); stroke-width: 2; fill: var(--fault); }
+        .sig.go { fill: var(--green-ink); }
+        .tag { font: 600 10px 'Work Sans', sans-serif; fill: var(--text-light); text-anchor: middle; dominant-baseline: middle; }
+        .train rect { fill: var(--text-dark); stroke: var(--white); stroke-width: 1.5; }
+        .train text { font: 600 9px 'Work Sans', sans-serif; fill: var(--white); text-anchor: middle; dominant-baseline: central; }
+        #bs-status { font: 600 13px 'Work Sans', sans-serif; text-anchor: middle; fill: var(--green-ink); }
+        #bs-status.stop { fill: var(--fault); }
+        #bs-status2 { font: 400 10px 'Work Sans', sans-serif; text-anchor: middle; fill: var(--text-light); }
 
-        .hero-content {
-            max-width: 800px;
-        }
+        .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.8rem; color: var(--text-light); padding: 8px 4px 2px; }
+        .legend i { display: inline-block; width: 18px; height: 6px; border-radius: 3px; margin-right: 6px; vertical-align: middle; }
+        .legend i.dot { width: 10px; height: 10px; border-radius: 50%; }
 
-        .hero h1 {
-            font-family: 'Crimson Pro', serif;
-            font-size: clamp(3rem, 6vw, 5rem);
-            font-weight: 300;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            color: var(--text-dark);
-            letter-spacing: -1px;
+        .blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
+        .chip {
+            text-align: left; min-height: 56px; padding: 8px 12px; cursor: pointer;
+            border: 1.5px solid var(--green); border-radius: 10px; background: var(--green-wash);
+            font: inherit; color: var(--text-dark);
         }
+        .chip b { display: block; font-size: 0.9rem; font-weight: 600; }
+        .chip span { font-size: 0.8rem; color: var(--green-ink); font-weight: 500; }
+        .chip.occ { border-color: var(--peri-ink); background: var(--peri-wash); }
+        .chip.occ span { color: var(--peri-ink); }
+        .chip.fault { border-color: var(--fault); background: var(--fault-wash); border-style: dashed; }
+        .chip.fault span { color: var(--fault); }
 
-        .hero h1 .accent {
-            color: var(--green);
-            font-weight: 400;
+        .perms { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .perm {
+            display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 6px 10px;
+            border: 1.5px solid var(--line); border-radius: 10px; background: var(--white);
+            font: 500 0.85rem 'Work Sans', sans-serif; color: var(--text-dark); text-align: left; line-height: 1.25;
         }
+        button.perm { cursor: pointer; border-color: #BDBDCC; }
+        button.perm:hover { border-color: var(--text-dark); }
+        .perm small { display: block; font-weight: 400; font-size: 0.72rem; color: var(--text-light); }
+        .lamp { flex: none; width: 14px; height: 14px; border-radius: 50%; background: var(--fault); box-shadow: inset 0 0 0 2px rgba(255,255,255,0.55); }
+        .perm.ok .lamp { background: var(--green-ink); }
+        .perm:not(.ok) { background: var(--fault-wash); }
 
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-light);
-            margin-bottom: 3rem;
-            font-weight: 300;
-            max-width: 600px;
-            line-height: 1.8;
-        }
+        .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .controls .btn { width: 100%; padding: 0 12px; }
+        .btn:disabled { background: #E9E9EE; border-color: #E9E9EE; color: #77777F; cursor: not-allowed; }
+        .btn.estop { background: var(--fault); border-color: var(--fault); }
+        .btn.estop:hover { background: #963519; }
+        .btn.estop[aria-pressed="true"] { box-shadow: inset 0 0 0 3px var(--white), 0 0 0 2px var(--fault); }
+        .row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 10px; font-size: 0.9rem; }
+        .seg-ctl { display: inline-flex; border: 1.5px solid #BDBDCC; border-radius: 999px; overflow: hidden; }
+        .seg-ctl button { min-width: 44px; min-height: 40px; border: 0; background: var(--white); font: 500 0.9rem 'Work Sans', sans-serif; color: var(--text-dark); cursor: pointer; }
+        .seg-ctl button[aria-pressed="true"] { background: var(--text-dark); color: var(--white); }
+        .switch { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; cursor: pointer; }
+        .switch input { width: 20px; height: 20px; accent-color: var(--green-ink); }
 
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--green);
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            border: 2px solid var(--green);
-        }
+        #bs-log { list-style: none; font: 400 0.8rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--text-dark); background: var(--off-white); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; height: 10.5em; overflow: hidden; }
+        #bs-log li { line-height: 1.45; padding-left: 4.6em; text-indent: -4.6em; white-space: pre-wrap; }
+        #bs-log li:not(:first-child) { color: var(--text-light); }
 
-        .cta-button:hover {
-            background: var(--white);
-            color: var(--green);
-            transform: translateY(-2px);
-        }
+        .try { margin-top: 16px; display: grid; gap: 10px; }
+        .try li { list-style: none; padding: 12px 14px; border-left: 3px solid var(--green); background: var(--white); border-radius: 0 10px 10px 0; font-size: 0.93rem; color: var(--text-light); }
+        .try b { color: var(--text-dark); font-weight: 600; }
+        .note { margin-top: 14px; font-size: 0.82rem; color: var(--text-light); }
 
-        /* Divider */
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, var(--periwinkle), transparent);
-            margin: 6rem 0;
-            opacity: 0.5;
-        }
-
-        /* Section */
-        .section {
-            padding: 6rem 0;
-        }
-
-        .section-header {
-            margin-bottom: 4rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-
-        .section-header.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-title {
-            font-family: 'Crimson Pro', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 400;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-            letter-spacing: -0.5px;
-        }
-
-        .section-subtitle {
-            font-size: 1rem;
-            color: var(--text-light);
-            font-weight: 300;
-        }
-
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: left;
-            padding: 2rem 0;
-            border-top: 2px solid var(--periwinkle);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-
-        .stat-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .stat-item:hover .stat-number {
-            color: var(--green);
-        }
-
-        .stat-number {
-            font-family: 'Crimson Pro', serif;
-            font-size: 3.5rem;
-            font-weight: 300;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            font-weight: 300;
-            letter-spacing: 0.3px;
-        }
-
-        /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 4rem 3rem;
-            margin-top: 4rem;
-        }
-
-        .project-card {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-            cursor: pointer;
-        }
-
-        .project-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .project-number {
-            font-family: 'Crimson Pro', serif;
-            font-size: 0.85rem;
-            color: var(--green);
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
-
-        .project-card h3 {
-            font-family: 'Crimson Pro', serif;
-            font-size: 1.8rem;
-            font-weight: 400;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-            letter-spacing: -0.3px;
-            transition: color 0.3s ease;
-        }
-
-        .project-card:hover h3 {
-            color: var(--green);
-        }
-
-        .project-card p {
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            font-weight: 300;
-            line-height: 1.8;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .tech-tag {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            font-weight: 300;
-            padding-right: 1rem;
-            border-right: 1px solid var(--periwinkle);
-        }
-
-        .tech-tag:last-child {
-            border-right: none;
-            padding-right: 0;
-        }
+        /* Work */
+        .work-grid { display: grid; gap: 12px; }
+        .work-card { display: block; padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--white); text-decoration: none; color: inherit; }
+        .work-card:hover { border-color: var(--green-ink); }
+        .work-card .role { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-ink); }
+        .work-card h3 { font-size: 1.45rem; margin: 6px 0 8px; }
+        .work-card p { font-size: 0.95rem; color: var(--text-light); }
+        .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+        .tags span { padding: 3px 10px; border-radius: 999px; background: var(--peri-wash); font-size: 0.8rem; }
+        .center { text-align: center; margin-top: 24px; }
 
         /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 4rem;
-            margin-top: 4rem;
-        }
-
-        .skill-category {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-
-        .skill-category.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .skill-category h3 {
-            font-family: 'Crimson Pro', serif;
-            font-size: 1.3rem;
-            font-weight: 400;
-            margin-bottom: 2rem;
-            color: var(--green);
-            letter-spacing: -0.3px;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            padding: 1.2rem 0;
-            border-bottom: 1px solid var(--light-gray);
-            color: var(--text-light);
-            font-weight: 300;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .skill-list li:hover {
-            color: var(--text-dark);
-            padding-left: 10px;
-        }
-
-        .skill-list li:last-child {
-            border-bottom: none;
-        }
+        .skills { display: grid; gap: 18px; }
+        .skills h3 { font: 600 0.78rem 'Work Sans', sans-serif; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-light); margin-bottom: 8px; }
+        .skills .tags { margin-top: 0; }
+        .skills .tags span { background: var(--white); border: 1px solid var(--line); font-size: 0.88rem; padding: 5px 12px; }
 
         /* Contact */
-        .contact-section {
-            padding: 10rem 0 8rem;
-            background: var(--off-white);
+        .contact h2 { margin-bottom: 8px; }
+        .contact-list { display: grid; gap: 10px; margin-top: 20px; }
+        .contact-item { display: flex; align-items: center; gap: 14px; min-height: 60px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--white); text-decoration: none; color: var(--text-dark); }
+        .contact-item:hover { border-color: var(--green-ink); }
+        .contact-item svg { flex: none; color: var(--green-ink); }
+        .contact-item small { display: block; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-light); }
+        .contact-item b { font-weight: 500; overflow-wrap: anywhere; }
+        .contact-item.primary { background: var(--green-ink); border-color: var(--green-ink); color: var(--white); }
+        .contact-item.primary svg, .contact-item.primary small { color: var(--white); }
+
+        footer { padding: 24px 0; font-size: 0.85rem; color: var(--text-light); }
+        .footer-content { display: flex; flex-wrap: wrap; gap: 4px 16px; justify-content: space-between; }
+
+        /* Mobile action bar */
+        .action-bar {
+            position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+            display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 8px;
+            padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+            background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(8px);
+            border-top: 1px solid var(--line);
         }
+        .action-bar .btn { min-height: 48px; padding: 0 8px; font-size: 0.95rem; }
 
-        .contact-content {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
+        :focus-visible { outline: 3px solid var(--peri-ink); outline-offset: 2px; }
+
+        @media (min-width: 720px) {
+            body { padding-bottom: 0; }
+            .action-bar { display: none; }
+            nav .desk { display: block; }
+            .container { padding: 0 32px; }
+            .header-content { height: 68px; }
+            .hero { padding: 80px 0 56px; }
+            .hero::before { width: 380px; height: 380px; top: -140px; right: -100px; }
+            .hero-actions .btn { flex: 0 0 auto; }
+            .facts { grid-template-columns: repeat(4, 1fr); margin-top: 48px; }
+            .section { padding: 72px 0; }
+            .demo { padding: 24px; }
+            .work-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+            .feature { grid-template-columns: 0.8fr 1.2fr; }
+            .feature-media { aspect-ratio: auto; min-height: 240px; }
+            .feature-body { padding: 26px; }
+            .feature-actions .btn { flex: 0 0 auto; }
+            .skills { grid-template-columns: 1fr 1fr; gap: 24px 32px; }
+            .contact-list { grid-template-columns: 1fr 1fr; }
+            .try { grid-template-columns: repeat(3, 1fr); }
         }
-
-        .contact-section h2 {
-            font-family: 'Crimson Pro', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 300;
-            margin-bottom: 2rem;
-            color: var(--text-dark);
-            letter-spacing: -1px;
+        @media (min-width: 980px) {
+            .demo-grid { grid-template-columns: 1.15fr 1fr; align-items: start; gap: 24px; }
         }
-
-        .contact-section p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 3rem;
-            font-weight: 300;
-            line-height: 1.8;
-        }
-
-        .contact-email {
-            display: inline-block;
-            font-family: 'Crimson Pro', serif;
-            font-size: 1.8rem;
-            color: var(--green);
-            text-decoration: none;
-            border-bottom: 2px solid var(--periwinkle);
-            padding-bottom: 0.5rem;
-            transition: all 0.3s ease;
-            font-weight: 400;
-            letter-spacing: -0.3px;
-            cursor: pointer;
-        }
-
-        .contact-email:hover {
-            border-bottom-color: var(--green);
-        }
-
-        .contact-links {
-            margin-top: 4rem;
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-            font-weight: 300;
-            letter-spacing: 0.3px;
-        }
-
-        .contact-link:hover {
-            color: var(--green);
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem 0;
-            border-top: 1px solid var(--periwinkle);
-            background: var(--white);
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-            color: var(--text-light);
-            font-weight: 300;
-        }
-
-        /* Accent elements */
-        .accent-block {
-            position: fixed;
-            top: 20%;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background: var(--periwinkle);
-            opacity: 0.3;
-            border-radius: 50%;
-            z-index: -1;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) scale(1);
-            }
-            50% {
-                transform: translateY(-20px) scale(1.05);
-            }
-        }
-
-        .accent-block-2 {
-            position: fixed;
-            bottom: 10%;
-            left: -100px;
-            width: 300px;
-            height: 300px;
-            background: var(--periwinkle);
-            opacity: 0.2;
-            border-radius: 50%;
-            z-index: -1;
-            animation: float 8s ease-in-out infinite;
-            animation-delay: 1s;
-        }
-
-        /* Cursor trail */
-        .cursor-trail {
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            background: var(--green);
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0;
-            z-index: 9999;
-            transition: opacity 0.3s;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-
-            .header-content {
-                flex-direction: column;
-                gap: 1.5rem;
-                align-items: flex-start;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .hero {
-                padding: 6rem 0 4rem;
-            }
-
-            .section {
-                padding: 4rem 0;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .stats-grid {
-                gap: 2rem;
-            }
-
-            .contact-section {
-                padding: 6rem 0 5rem;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-        }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     </style>
 </head>
 <body>
-    <div class="accent-block"></div>
-    <div class="accent-block-2"></div>
-
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">Arriana Flores</div>
-                <nav>
+                <a href="#top" class="logo">Arriana Flores</a>
+                <nav aria-label="Main">
                     <ul>
-                        <li><a href="#work">Work</a></li>
+                        <li><a href="#demo">Demo</a></li>
                         <li><a href="projects.html">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li class="desk"><a href="#contact">Contact</a></li>
+                        <li class="desk"><a href="resume.pdf" target="_blank" rel="noopener" class="btn small" style="color:#fff">Résumé</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
 
-    <main>
+    <main id="top">
         <section class="hero">
             <div class="container">
-                <div class="hero-content">
-                    <h1>Engineering the <span class="accent">magic</span> behind the show</h1>
-                    <p>Electrical &amp; Computer Engineering student at Cal Poly Pomona with a minor in Theater. I build the controls, circuits, and show systems that bring themed experiences to life, from animatronics and ride controls to lighting and AV.</p>
-                    <a href="#work" class="cta-button">View My Work</a>
+                <p class="eyebrow">Ride and Show Engineering</p>
+                <h1>Engineering the <em>magic</em> behind the show</h1>
+                <p class="lead">Electrical &amp; Computer Engineering student focused on show control, animatronics, and interactive systems.</p>
+                <div class="hero-actions">
+                    <a href="#work" class="btn">Explore My Work</a>
+                    <a href="resume.pdf" target="_blank" rel="noopener" class="btn ghost">View Résumé</a>
+                </div>
+                <p class="hero-links"><a href="https://linkedin.com/in/arrianaf" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:arriana.f@outlook.com">Email</a><a href="#demo">Try the ride controls demo</a></p>
+
+                <div class="facts">
+                    <a class="fact" href="escape-room.html"><b>~50</b><span>team members led</span><small>Escape Room</small></a>
+                    <a class="fact" href="escape-room.html"><b>10+</b><span>ESP32 devices integrated</span><small>Escape Room</small></a>
+                    <a class="fact" href="rose-float.html"><b>7+ hr</b><span>standalone show runtime</span><small>Rose Float</small></a>
+                    <a class="fact" href="escape-room.html"><b>12</b><span>presence sensors</span><small>Escape Room</small></a>
                 </div>
             </div>
         </section>
-
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number" data-target="3">3</div>
-                    <div class="stat-label">Animatronic figures in development</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-target="30" data-suffix="%">30%</div>
-                    <div class="stat-label">Fewer comm errors on the NGCP UAV flight stack</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-target="1">1</div>
-                    <div class="stat-label">Largest student council at CPP, led as ESC President</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-target="68" data-suffix="%">68%</div>
-                    <div class="stat-label">Boost in engagement from my IEEE workshop series</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="divider"></div>
-        </div>
 
         <section id="work" class="section">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Selected Work</h2>
-                    <p class="section-subtitle">Where electrical engineering meets storytelling</p>
+                <h2>Selected Engineering Work</h2>
+                <p class="sub">Three projects where I designed, programmed and integrated the systems behind the experience.</p>
+
+                <!-- To add a card photo: put the image path in data-photo, e.g. data-photo="images/escape-room.jpg" -->
+                <div class="features">
+                    <article class="feature">
+                        <div class="feature-media" data-photo="" data-alt="Retro Rewind Escape Room"><span class="num" aria-hidden="true">01</span></div>
+                        <div class="feature-body">
+                            <span class="role">Show Control · Animatronics · Systems Integration</span>
+                            <h3>Multi-Room Interactive Attraction</h3>
+                            <p>Retro Rewind Escape Room. As Engineering Chief I led the build of a multi-room attraction that opened on campus.</p>
+                            <ul class="wins-list">
+                                <li>Led about 50 members and passed fire marshal review</li>
+                                <li>PLC plus 10+ ESP32 devices and 12 presence sensors on one MQTT network</li>
+                            </ul>
+                            <div class="tags"><span>AutomationDirect PLC</span><span>ESP32</span><span>MQTT</span><span>Fusion 360</span><span>Maya</span><span>3D printing</span></div>
+                            <div class="feature-actions"><a class="btn" href="escape-room.html">View Project</a></div>
+                        </div>
+                    </article>
+
+                    <article class="feature">
+                        <div class="feature-media" data-photo="" data-alt="Cal Poly Universities Rose Float"><span class="num" aria-hidden="true">02</span></div>
+                        <div class="feature-body">
+                            <span class="role">Show Control · Hydraulic Animation</span>
+                            <h3>Rose Parade Float Show Control</h3>
+                            <p>A custom show control program that unifies Gilderfluke controllers and audio repeaters on a Tournament of Roses Parade float.</p>
+                            <ul class="wins-list">
+                                <li>7+ hours of standalone animation and audio</li>
+                                <li>Hydraulic sequences programmed and tuned for smooth, repeatable motion</li>
+                            </ul>
+                            <div class="tags"><span>Gilderfluke PC-MACs</span><span>PowerShell</span><span>JavaScript</span><span>Hydraulics</span></div>
+                            <div class="feature-actions"><a class="btn" href="rose-float.html">View Project</a></div>
+                        </div>
+                    </article>
+
+                    <article class="feature">
+                        <div class="feature-media" data-photo="" data-alt="Ride engineering competition coaster"><span class="num" aria-hidden="true">03</span><span class="status">In development</span></div>
+                        <div class="feature-body">
+                            <span class="role">Ride Controls · PLC Programming</span>
+                            <h3>Ride Engineering Competition</h3>
+                            <p>As Controls Lead I'm designing the control system for a competition roller coaster. The work is in the design stage.</p>
+                            <ul class="wins-list">
+                                <li>Designing block-zone logic with fail-safe sensor behavior</li>
+                                <li>Defining dispatch interlocks and coordinating four controls sub-teams</li>
+                            </ul>
+                            <div class="tags"><span>AutomationDirect PLC</span><span>Block-zone logic</span><span>Dispatch interlocks</span></div>
+                            <div class="feature-actions"><a class="btn" href="#demo">Try the simulator</a><a class="btn ghost" href="projects.html#project-04">View Project</a></div>
+                        </div>
+                    </article>
                 </div>
 
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-number">01</div>
-                        <h3>Cal Poly Universities Rose Float</h3>
-                        <p>Show control for a Tournament of Roses Parade float: Gilderfluke controllers, hydraulic animation tuned for smooth motion, and 7+ hours of standalone animation and audio.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Gilderfluke PC-MACs</span>
-                            <span class="tech-tag">Hydraulics</span>
-                            <span class="tech-tag">Audio</span>
-                            <span class="tech-tag">Show Control</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-number">02</div>
-                        <h3>Retro Rewind Escape Room</h3>
-                        <p>A multi-room themed escape experience with animatronic characters, synchronized lighting and sound cues, and a full PLC-based show control system.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">PLC (P1-550)</span>
-                            <span class="tech-tag">ESP32</span>
-                            <span class="tech-tag">Modbus</span>
-                            <span class="tech-tag">Show Control</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-number">03</div>
-                        <h3>Animatronic Figures</h3>
-                        <p>Motion and control design for three characters (Ronnie, Winston, and a Demogorgon), including a linear-actuator jaw driven from an ESP32.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Actuonix P16-P</span>
-                            <span class="tech-tag">LAC Board</span>
-                            <span class="tech-tag">ESP32</span>
-                            <span class="tech-tag">Animatronics</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-number">04</div>
-                        <h3>Roller Coaster Ride Controls</h3>
-                        <p>Electronics and control logic for a ride engineering competition coaster, built around a block system that keeps trains safely spaced.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">PLC</span>
-                            <span class="tech-tag">Block Zones</span>
-                            <span class="tech-tag">Sensors</span>
-                            <span class="tech-tag">Ride Safety</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-number">05</div>
-                        <h3>"Holy Grail" Control PCB</h3>
-                        <p>Custom board co-designed for the escape room, with power simulated in LTspice and field-debugged down to a failed ESD protection diode.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">PCB Design</span>
-                            <span class="tech-tag">LTspice</span>
-                            <span class="tech-tag">Power</span>
-                            <span class="tech-tag">Debugging</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-number">06</div>
-                        <h3>NGCP UAV Electrical Systems</h3>
-                        <p>Electrical Lead. Built the Raspberry Pi + Pixhawk flight stack, cut I2C/UART comm errors by 30%, and run KrakenSDR telemetry and direction finding while designing a custom SDR board.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Raspberry Pi</span>
-                            <span class="tech-tag">Pixhawk</span>
-                            <span class="tech-tag">KrakenSDR</span>
-                            <span class="tech-tag">RF Design</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-number">07</div>
+                <h3 class="beyond">Engineering Beyond the Show</h3>
+                <div class="work-grid">
+                    <a class="work-card" href="ngcp-uav.html">
+                        <span class="role">Team Lead · Northrop Grumman Collaboration Project</span>
+                        <h3>UAV Flight Stack and Telemetry</h3>
+                        <p>Raspberry Pi and Pixhawk integration with KrakenSDR telemetry. The same embedded communication skills a show network needs.</p>
+                    </a>
+                    <a class="work-card" href="nl-robotics.html">
+                        <span class="role">Project Manager</span>
                         <h3>Natural Language Robotic Control</h3>
-                        <p>Project Manager. Led a team building a robot that takes plain-English commands, with an LLM + rule-based interpreter hitting 100% accuracy and sub-1-second response, plus versioned motion sequences with full rollback.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Ollama</span>
-                            <span class="tech-tag">ROS2</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-number">08</div>
-                        <h3>Theater Lighting &amp; AV</h3>
-                        <p>Hands-on lighting and AV work for live productions, plus written cue documentation that keeps multi-room shows running on time.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Lighting</span>
-                            <span class="tech-tag">Audio/Video</span>
-                            <span class="tech-tag">Cue Stacks</span>
-                        </div>
-                    </div>
+                        <p>A robot that takes plain-English commands through an LLM with a rule-based fallback, built on ROS2 and PostgreSQL.</p>
+                    </a>
+                    <a class="work-card" href="projects.html">
+                        <span class="role">Team Leader · Quarterfinalist</span>
+                        <h3>Disney Imaginations</h3>
+                        <p>Turned lighting circuitry and power distribution feasibility into a narrative architectural model in Revit.</p>
+                    </a>
                 </div>
-
-                <div style="text-align: center; margin-top: 4rem;">
-                    <a href="projects.html" class="cta-button">View All Projects</a>
-                </div>
+                <p class="center"><a href="projects.html" class="btn ghost">See all projects</a></p>
             </div>
         </section>
 
-        <div class="container">
-            <div class="divider"></div>
-        </div>
-
-        <section id="expertise" class="section">
+        <section id="demo" class="section tint">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">What I Bring</h2>
-                    <p class="section-subtitle">Tools and skills for themed entertainment engineering</p>
+                <h2>Block system, live</h2>
+                <p class="sub">A conceptual simulation of the block logic I'm designing as Controls Lead for our ride engineering competition coaster. A train may only leave its block when the next one is proven clear.</p>
+                <p class="howto"><b>How to use:</b> the trains run on their own. Tap a block to cut its sensor power, or use the operator panel to stop the ride. Reset simulation puts everything back.</p>
+
+                <div class="demo" id="bs">
+                    <div class="demo-grid">
+                        <div>
+                            <div class="track-wrap">
+                                <svg id="bs-svg" viewBox="0 0 340 230" role="img" aria-label="Track diagram with five blocks and trains. Live block states are listed below.">
+                                    <path id="bs-track" d="M 50 195 H 290 A 30 30 0 0 0 320 165 V 65 A 30 30 0 0 0 290 35 H 50 A 30 30 0 0 0 20 65 V 165 A 30 30 0 0 0 50 195 Z" fill="none" stroke="#E0E0E8" stroke-width="13"></path>
+                                    <g id="bs-segs"></g>
+                                    <g id="bs-tags"></g>
+                                    <g id="bs-sigs"></g>
+                                    <g id="bs-trains"></g>
+                                    <text id="bs-status" x="170" y="108">RUNNING</text>
+                                    <text id="bs-status2" x="170" y="126">all blocks nominal</text>
+                                </svg>                            </div>
+                                <div class="legend" aria-hidden="true">
+                                    <span><i style="background:var(--green)"></i>Clear</span>
+                                    <span><i style="background:var(--peri-ink)"></i>Occupied</span>
+                                    <span><i style="background:var(--fault)"></i>Sensor fault</span>
+                                    <span><i class="dot" style="background:var(--green-ink)"></i>Release permitted</span>
+                                    <span><i class="dot" style="background:var(--fault)"></i>Hold</span>
+                                </div>
+
+                            <h3 style="margin-top:14px">Blocks <span style="text-transform:none;letter-spacing:0;font-weight:400">· tap one to cut its sensor power</span></h3>
+                            <div class="blocks" id="bs-blocks"></div>
+                        </div>
+
+                        <div>
+                            <h3>Dispatch interlocks</h3>
+                            <p class="dstate" id="bs-dstate" role="status"></p>
+                            <div class="perms" id="bs-perms"></div>
+
+                            <h3 style="margin-top:14px">Operator panel</h3>
+                            <div class="controls">
+                                <button type="button" class="btn" id="bs-dispatch">Dispatch</button>
+                                <button type="button" class="btn estop" id="bs-estop" aria-pressed="false">E-STOP</button>
+                                <button type="button" class="btn ghost" id="bs-reset" disabled>Reset E-stop</button>
+                                <button type="button" class="btn ghost" id="bs-restart">Reset simulation</button>
+                            </div>
+                            <div class="row">
+                                <label class="switch"><input type="checkbox" id="bs-auto" checked> Auto operator</label>
+                                <span>Trains
+                                    <span class="seg-ctl" id="bs-count" role="group" aria-label="Number of trains">
+                                        <button type="button" aria-pressed="false">1</button><button type="button" aria-pressed="true">2</button><button type="button" aria-pressed="false">3</button>
+                                    </span>
+                                </span>
+                            </div>
+
+                            <details class="logbox" id="bs-logbox">
+                                <summary>Event log</summary>
+                                <ol id="bs-log" aria-label="Controller event log"></ol>
+                            </details>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Show &amp; Ride Control</h3>
-                        <ul class="skill-list">
-                            <li>Gilderfluke show controllers (PC-MACs)</li>
-                            <li>PLC programming (Productivity P1-550)</li>
-                            <li>ESP32 embedded control</li>
-                            <li>Modbus communication</li>
-                            <li>Ride block systems</li>
-                            <li>Hydraulic &amp; electric animation</li>
-                        </ul>
-                    </div>
+                <ul class="try">
+                    <li><b>Cut a sensor.</b> Tap any block. With power lost it reads occupied, so the train behind it holds. That's the fail-safe default.</li>
+                    <li><b>Hit E-STOP mid-course.</b> The lift stops at once, but a coasting train can't. It runs to the next brake and holds there.</li>
+                    <li><b>Run it yourself.</b> Turn off Auto, then lock restraints and close gates before Dispatch will arm.</li>
+                </ul>
+                <p class="note">Educational simulation only. It illustrates block and interlock concepts with simplified train motion. It is not the competition ride's control code and does not validate the safety of any real ride.</p>
+            </div>
+        </section>
 
-                    <div class="skill-category">
-                        <h3>Hardware &amp; Software</h3>
-                        <ul class="skill-list">
-                            <li>PCB design &amp; power simulation (LTspice)</li>
-                            <li>RF front-ends &amp; SDR</li>
-                            <li>Python, ROS2 &amp; PostgreSQL</li>
-                            <li>LLM integration (Ollama)</li>
-                            <li>MATLAB / Simulink</li>
-                            <li>Raspberry Pi, Pixhawk &amp; QGroundControl</li>
-                            <li>I2C / UART, Linux</li>
-                            <li>Analog circuits &amp; DSP</li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3>Show Tech &amp; Leadership</h3>
-                        <ul class="skill-list">
-                            <li>Theater lighting &amp; AV</li>
-                            <li>Lighting &amp; sound cue documentation</li>
-                            <li>President, Engineering Student Council</li>
-                            <li>Leadership, TEA@CPP</li>
-                            <li>Project Manager, IEEE Workshop Series</li>
-                            <li>Project Manager, Natural Language Robotic Control</li>
-                            <li>Electrical Lead, NGCP UAV</li>
-                        </ul>
-                    </div>
+        <section class="section tint">
+            <div class="container">
+                <h2>Toolbox</h2>
+                <p class="sub">What I reach for on a ride or show build.</p>
+                <div class="skills">
+                    <div><h3>Controls and show control</h3><div class="tags"><span>AutomationDirect PLCs</span><span>Gilderfluke PC-MACs</span><span>MQTT</span><span>Block systems</span></div></div>
+                    <div><h3>Hardware and embedded</h3><div class="tags"><span>ESP32</span><span>Arduino</span><span>Raspberry Pi</span><span>I2C</span><span>UART</span></div></div>
+                    <div><h3>Programming</h3><div class="tags"><span>C/C++</span><span>C#</span><span>Python</span><span>JavaScript</span><span>PowerShell</span></div></div>
+                    <div><h3>Design tools</h3><div class="tags"><span>AutoCAD Electrical</span><span>MATLAB/Simulink</span><span>Fusion 360</span><span>Revit</span><span>Maya</span></div></div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact-section">
-            <div class="contact-content">
+        <section id="contact" class="section contact">
+            <div class="container">
                 <h2>Let's build something magical</h2>
-                <p>Open to internships and collaborations in themed entertainment, animatronics, ride controls, and show systems, as well as systems engineering, electrical engineering, and project management roles.</p>
-                <a href="mailto:your.email@cpp.edu" class="contact-email">your.email@cpp.edu</a>
-                <div class="contact-links">
-                    <a href="https://linkedin.com/in/yourusername" class="contact-link">LinkedIn</a>
-                    <a href="https://github.com/yourusername" class="contact-link">GitHub</a>
-                    <a href="#" class="contact-link">Resume</a>
+                <p class="sub">Open to internships in ride controls, show control and animatronics, plus systems, electrical and project engineering roles.</p>
+                <div class="contact-list">
+                    <a class="contact-item primary" href="resume.pdf" target="_blank" rel="noopener">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg>
+                        <span><small>Résumé</small><b>Open the one-page PDF</b></span>
+                    </a>
+                    <a class="contact-item" href="mailto:arriana.f@outlook.com">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6l9-6"></path></svg>
+                        <span><small>Email</small><b>arriana.f@outlook.com</b></span>
+                    </a>
+                    <a class="contact-item" href="https://linkedin.com/in/arrianaf" target="_blank" rel="noopener">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M8 11v5"></path><path d="M8 8v.01"></path><path d="M12 16v-5"></path><path d="M16 16v-3a2 2 0 0 0-4 0"></path></svg>
+                        <span><small>LinkedIn</small><b>linkedin.com/in/arrianaf</b></span>
+                    </a>
+                    <a class="contact-item" href="https://github.com/chiharurina" target="_blank" rel="noopener">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6l-6 6l6 6"></path><path d="M16 6l6 6l-6 6"></path></svg>
+                        <span><small>GitHub</small><b>github.com/chiharurina</b></span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -777,172 +504,329 @@
         <div class="container">
             <div class="footer-content">
                 <p>© 2026 Arriana Flores</p>
-                <p>Cal Poly Pomona · Electrical &amp; Computer Engineering</p>
+                <p>Cal Poly Pomona · Electrical and Computer Engineering</p>
             </div>
         </div>
     </footer>
 
+    <div class="action-bar" role="navigation" aria-label="Quick contact">
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
+        <a class="btn ghost" href="mailto:arriana.f@outlook.com">Email</a>
+        <a class="btn ghost" href="https://linkedin.com/in/arrianaf" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+
     <script>
-        // ========== SMOOTH SCROLLING ==========
-        const navLinks = document.querySelectorAll('nav a');
+    // ========== BLOCK SYSTEM DEMO ==========
+    // Five blocks in a loop. Each block ends at a stopping device (station brakes, lift,
+    // or a brake run). A train may pass that point only if the next block reads clear and
+    // every condition the device depends on is healthy. A block with no sensor power reads
+    // occupied (fail-safe). Powered sections (station drive, lift) stop immediately on a
+    // stop command; gravity sections coast to the next brake.
+    (() => {
+        const NS = 'http://www.w3.org/2000/svg';
+        const el = (tag, attrs = {}, parent) => {
+            const n = document.createElementNS(NS, tag);
+            for (const k in attrs) n.setAttribute(k, attrs[k]);
+            if (parent) parent.appendChild(n);
+            return n;
+        };
+        const $ = id => document.getElementById(id);
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+        const path = $('bs-track');
+        const L = path.getTotalLength();
+        const CX = 170, CY = 115;
 
-        // ========== ACTIVE SECTION HIGHLIGHTING ==========
-        const sections = document.querySelectorAll('section[id]');
+        const BLOCKS = [
+            { name: 'Station',    stop: 'station brakes',   frac: 0.00, v: 45,  air: true,  drive: true  },
+            { name: 'Lift',       stop: 'top of lift',      frac: 0.22, v: 38,  air: false, drive: true  },
+            { name: 'Block A',    stop: 'mid-course brake', frac: 0.44, v: 150, air: true,  drive: false },
+            { name: 'Block B',    stop: 'final brake',      frac: 0.64, v: 130, air: true,  drive: false },
+            { name: 'Hold brake', stop: 'hold brake',       frac: 0.84, v: 60,  air: true,  drive: false }
+        ];
+        const N = BLOCKS.length;
+        const start = BLOCKS.map(b => b.frac * L);
+        const len = BLOCKS.map((b, i) => (i === N - 1 ? L : start[i + 1]) - start[i]);
+        const TRAIN = 28, STOP_GAP = 6, ACCEL = 140, BRAKE = 260;
 
-        const highlightNav = () => {
-            const scrollY = window.pageYOffset;
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 200;
-                const sectionId = section.getAttribute('id');
-                if (scrollY > sectionTop && scrollY <= sectionTop + section.offsetHeight) {
-                    navLinks.forEach(link => {
-                        link.classList.toggle('active', link.getAttribute('href') === `#${sectionId}`);
-                    });
-                }
-            });
+        const at = s => path.getPointAtLength(((s % L) + L) % L);
+        const offset = (s, d) => {            // point at s, pushed d px away from loop centre
+            const p = at(s), dx = p.x - CX, dy = p.y - CY, m = Math.hypot(dx, dy) || 1;
+            return { x: p.x + dx / m * d, y: p.y + dy / m * d };
         };
 
-        window.addEventListener('scroll', highlightNav);
-
-        // ========== SCROLL ANIMATIONS ==========
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('.section-header, .stat-item, .project-card, .skill-category').forEach(el => {
-            observer.observe(el);
+        // ----- static drawing -----
+        const segs = BLOCKS.map((b, i) => el('path', {
+            d: path.getAttribute('d'), class: 'seg',
+            'stroke-dasharray': `${len[i] - 4} ${L}`, 'stroke-dashoffset': -(start[i] + 2)
+        }, $('bs-segs')));
+        BLOCKS.forEach((b, i) => {
+            const p = offset(start[i] + len[i] / 2, -17);
+            el('text', { x: p.x, y: p.y, class: 'tag' }, $('bs-tags')).textContent = 'B' + (i + 1);
+        });
+        const sigs = BLOCKS.map((b, i) => {
+            const p = offset(start[i] + len[i] - STOP_GAP, 14);
+            return el('circle', { cx: p.x, cy: p.y, r: 5, class: 'sig' }, $('bs-sigs'));
         });
 
-        // ========== ANIMATED COUNTERS ==========
-        const animateCounter = (element, target, duration = 1500) => {
-            const suffix = element.getAttribute('data-suffix') || '';
-            const start = performance.now();
-            const step = (now) => {
-                const progress = Math.min((now - start) / duration, 1);
-                element.textContent = Math.floor(progress * target) + suffix;
-                if (progress < 1) requestAnimationFrame(step);
-                else element.textContent = target + suffix;
-            };
-            requestAnimationFrame(step);
-        };
+        const chips = BLOCKS.map((b, i) => {
+            const c = document.createElement('button');
+            c.type = 'button'; c.className = 'chip';
+            c.innerHTML = `<b>B${i + 1} · ${b.name}</b><span></span>`;
+            c.addEventListener('click', () => {
+                S.fault[i] = !S.fault[i];
+                log(S.fault[i] ? `B${i + 1} sensor power LOST, block forced occupied` : `B${i + 1} sensor power restored`);
+            });
+            $('bs-blocks').appendChild(c);
+            return c;
+        });
 
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                    entry.target.classList.add('counted');
-                    const number = entry.target.querySelector('.stat-number');
-                    animateCounter(number, parseInt(number.getAttribute('data-target')));
+        const PERMS = [
+            { key: 'estopOK',    label: 'E-stop reset' },
+            { key: 'rideStopOK', label: 'Ride stop clear',  toggle: 'rideStop',   invert: true },
+            { key: 'air',        label: 'Air pressure',     toggle: 'air' },
+            { key: 'drive',      label: 'Drive status',     toggle: 'drive' },
+            { key: 'restraints', label: 'Restraints locked', toggle: 'restraints', station: true },
+            { key: 'gates',      label: 'Gates closed',     toggle: 'gates',      station: true },
+            { key: 'nextClear',  label: 'Next block clear' },
+            { key: 'parked',     label: 'Train parked' }
+        ];
+        const permEls = PERMS.map(p => {
+            const n = document.createElement(p.toggle ? 'button' : 'div');
+            if (p.toggle) n.type = 'button';
+            n.className = 'perm';
+            n.innerHTML = `<span class="lamp"></span><span>${p.label}<small>${p.toggle ? 'tap to toggle' : 'computed'}</small></span>`;
+            if (p.toggle) n.addEventListener('click', () => {
+                if (p.station) {
+                    if (!S.parked || S.dispatched) { log(`${p.label}: only changeable with a train parked`); return; }
+                    if (S.auto) { S.auto = false; $('bs-auto').checked = false; log('Auto operator OFF, manual station control'); }
                 }
+                S[p.toggle] = !S[p.toggle];
+                const ok = p.invert ? !S[p.toggle] : S[p.toggle];
+                log(`${p.label}: ${ok ? 'OK' : 'NOT OK'}`);
+                if (p.toggle === 'rideStop' && S.rideStop) S.dispatched = false;
             });
-        }, { threshold: 0.5 });
-
-        document.querySelectorAll('.stat-item').forEach(stat => statsObserver.observe(stat));
-
-        // ========== PARALLAX BACKGROUND CIRCLES ==========
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrolled = window.pageYOffset;
-                    const accent1 = document.querySelector('.accent-block');
-                    const accent2 = document.querySelector('.accent-block-2');
-                    if (accent1) accent1.style.transform = `translateY(${scrolled * 0.3}px)`;
-                    if (accent2) accent2.style.transform = `translateY(${-scrolled * 0.2}px)`;
-                    ticking = false;
-                });
-                ticking = true;
-            }
+            $('bs-perms').appendChild(n);
+            return n;
         });
 
-        // ========== PROJECT CARD 3D TILT ==========
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mousemove', function (e) {
-                const rect = this.getBoundingClientRect();
-                const rotateX = (e.clientY - rect.top - rect.height / 2) / 20;
-                const rotateY = (rect.width / 2 - (e.clientX - rect.left)) / 20;
-                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-            });
-            card.addEventListener('mouseleave', function () {
-                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
-            });
-        });
+        // ----- state -----
+        let S, trains, trainEls = [], count = 2;
 
-        // ========== CURSOR TRAIL ==========
-        const trails = [];
-        const maxTrails = 10;
-
-        for (let i = 0; i < maxTrails; i++) {
-            const trail = document.createElement('div');
-            trail.className = 'cursor-trail';
-            document.body.appendChild(trail);
-            trails.push(trail);
+        const logEl = $('bs-log');
+        function log(msg) {
+            const li = document.createElement('li');
+            li.textContent = `${S.t.toFixed(1).padStart(6, ' ')}s  ${msg}`;
+            logEl.prepend(li);
+            while (logEl.children.length > 5) logEl.lastChild.remove();
         }
 
-        let currentTrail = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            const trail = trails[currentTrail];
-            trail.style.left = e.clientX - 4 + 'px';
-            trail.style.top = e.clientY - 4 + 'px';
-            trail.style.opacity = '0.6';
-            setTimeout(() => { trail.style.opacity = '0'; }, 300);
-            currentTrail = (currentTrail + 1) % maxTrails;
-        });
-
-        // ========== COPY EMAIL ==========
-        const emailLink = document.querySelector('.contact-email');
-        emailLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            const email = emailLink.textContent;
-            navigator.clipboard.writeText(email).then(() => {
-                emailLink.textContent = 'Copied to clipboard!';
-                setTimeout(() => { emailLink.textContent = email; }, 2000);
-            }).catch(() => { window.location.href = 'mailto:' + email; });
-        });
-
-        // ========== TYPING EFFECT ==========
-        const heroTitle = document.querySelector('.hero h1');
-        const originalHTML = heroTitle.innerHTML;
-        heroTitle.innerHTML = '';
-
-        let charIndex = 0;
-        let htmlBuffer = '';
-
-        const typeWriter = () => {
-            if (charIndex < originalHTML.length) {
-                const char = originalHTML.charAt(charIndex);
-                if (char === '<') {
-                    const closeTag = originalHTML.indexOf('>', charIndex);
-                    htmlBuffer += originalHTML.substring(charIndex, closeTag + 1);
-                    charIndex = closeTag + 1;
-                } else if (char === '&') {
-                    const semi = originalHTML.indexOf(';', charIndex);
-                    htmlBuffer += originalHTML.substring(charIndex, semi + 1);
-                    charIndex = semi + 1;
-                } else {
-                    htmlBuffer += char;
-                    charIndex++;
-                }
-                heroTitle.innerHTML = htmlBuffer + '<span style="opacity: 0.3;">|</span>';
-                setTimeout(typeWriter, 50);
-            } else {
-                heroTitle.innerHTML = originalHTML;
+        function reset() {
+            S = { t: 0, estop: false, rideStop: false, air: true, drive: true, restraints: false, gates: false,
+                  dispatched: false, parked: false, autoT: 0, auto: $('bs-auto').checked,
+                  occ: Array(N).fill(null), fault: Array(N).fill(false) };
+            const homes = [0, 4, 3];                       // station, then queue back from the hold brake
+            trains = [];
+            $('bs-trains').replaceChildren();
+            trainEls = [];
+            for (let k = 0; k < count; k++) {
+                const b = homes[k];
+                trains.push({ id: k + 1, blk: b, s: start[b] + len[b] - STOP_GAP, v: 0,
+                              nextB: start[b] + len[b], clearAt: null, clearBlk: null, held: null, arrived: false });
+                S.occ[b] = k + 1;
+                const g = el('g', { class: 'train' }, $('bs-trains'));
+                const r = el('rect', { x: -TRAIN / 2, y: -6.5, width: TRAIN, height: 13, rx: 4 }, g);
+                const t = el('text', {}, g); t.textContent = k + 1;
+                trainEls.push({ g, r, t });
             }
-        };
+            logEl.replaceChildren();
+            log(`Sim start, ${count} train${count > 1 ? 's' : ''} on ${N} blocks`);
+        }
 
-        setTimeout(typeWriter, 800);
+        const occRead = i => S.occ[i] !== null || S.fault[i];   // fail-safe: no sensor power = occupied
+        const stopCmd = () => S.estop || S.rideStop;
+
+        // May the train in block i pass its stopping point? Returns null if yes, else the reason.
+        function holdReason(i) {
+            const b = BLOCKS[i], n = (i + 1) % N;
+            if (S.estop) return 'E-stop active';
+            if (S.rideStop) return 'ride stop active';
+            if (b.air && !S.air) return 'low air, brakes fail closed';
+            if (b.drive && !S.drive) return 'drive fault';
+            if (occRead(n)) return `B${n + 1} ${S.fault[n] && S.occ[n] === null ? 'sensor fault (reads occupied)' : 'occupied'}`;
+            if (i === 0 && !S.dispatched) return 'awaiting dispatch';
+            return null;
+        }
+
+        function permState() {
+            return { estopOK: !S.estop, rideStopOK: !S.rideStop, air: S.air, drive: S.drive,
+                     restraints: S.restraints, gates: S.gates, nextClear: !occRead(1), parked: S.parked };
+        }
+        const canDispatch = () => Object.values(permState()).every(Boolean) && !S.dispatched;
+
+        function dispatch() {
+            if (!canDispatch()) {
+                const p = permState();
+                const bad = PERMS.filter(x => !p[x.key]).map(x => x.label);
+                log('DISPATCH INHIBITED: ' + (bad.join(', ') || 'already dispatched'));
+                return;
+            }
+            S.dispatched = true;
+            log('Dispatch accepted, station brakes open');
+        }
+
+        // ----- simulation step -----
+        function step(dt) {
+            S.t += dt;
+            let parked = false;
+
+            for (const t of trains) {
+                const i = t.blk, b = BLOCKS[i];
+                const stopAt = t.nextB - STOP_GAP;
+                const reason = t.s <= stopAt ? holdReason(i) : null;        // past the stop point = committed
+                let target = b.v;
+
+                // Powered sections lose drive at once; gravity sections keep rolling to the brake.
+                if (b.drive && (stopCmd() || !S.drive)) target = 0;
+
+                if (reason) {
+                    const d = stopAt - t.s;
+                    target = Math.min(target, Math.sqrt(Math.max(0, 2 * BRAKE * d)));
+                }
+                if (t.v < target) t.v = Math.min(target, t.v + ACCEL * dt);
+                else t.v = Math.max(target, t.v - BRAKE * dt);
+                let ns = t.s + t.v * dt;
+                // A held train can never pass its stopping device, whatever the time step.
+                if (reason && ns >= stopAt - 0.3) { ns = stopAt; t.v = 0; }
+                t.s = ns;
+
+                // Hold bookkeeping (log once per stop)
+                const stoppedAtDevice = t.v === 0 && t.s === stopAt;
+                if (stoppedAtDevice && reason && t.held !== reason) {
+                    t.held = reason;
+                    if (!(i === 0 && reason === 'awaiting dispatch')) log(`T${t.id} held at ${b.stop}: ${reason}`);
+                }
+                if (!reason && t.held) { t.held = null; if (i !== 0) log(`T${t.id} released from ${b.stop}`); }
+
+                // Station arrival: unload, so restraints open and gates open
+                if (i === 0 && stoppedAtDevice) {
+                    parked = true;
+                    if (!t.arrived) {
+                        t.arrived = true;
+                        S.restraints = false; S.gates = false; S.dispatched = false; S.autoT = 0;
+                        log(`T${t.id} parked in station, restraints open, gates open`);
+                    }
+                }
+
+                // Head trips the next block's entry sensor
+                if (t.s >= t.nextB) {
+                    const n = (i + 1) % N;
+                    S.occ[n] = t.id;
+                    t.clearBlk = i; t.clearAt = t.nextB + TRAIN;
+                    t.blk = n; t.nextB += len[n]; t.arrived = false; t.held = null;
+                    if (i === 0) S.dispatched = false;
+                }
+                // Tail clears that sensor, so the block behind is released
+                if (t.clearAt !== null && t.s >= t.clearAt) {
+                    if (S.occ[t.clearBlk] === t.id) S.occ[t.clearBlk] = null;
+                    t.clearAt = null; t.clearBlk = null;
+                }
+            }
+            S.parked = parked;
+
+            // Auto operator runs the station cycle the way a person would
+            if (S.auto && S.parked && !S.dispatched) {
+                S.autoT += dt;
+                if (S.autoT > 1.2 && !S.restraints) { S.restraints = true; log('Auto: restraints locked'); }
+                if (S.autoT > 2.0 && !S.gates) { S.gates = true; log('Auto: gates closed'); }
+                if (S.autoT > 2.8 && canDispatch()) dispatch();
+            }
+        }
+
+        // ----- render -----
+        function render() {
+            trains.forEach((t, k) => {
+                const c = t.s - TRAIN / 2, p = at(c), a = at(c - 2), z = at(c + 2);
+                const ang = Math.atan2(z.y - a.y, z.x - a.x) * 180 / Math.PI;
+                trainEls[k].g.setAttribute('transform', `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)})`);
+                trainEls[k].r.setAttribute('transform', `rotate(${ang.toFixed(1)})`);
+            });
+            BLOCKS.forEach((b, i) => {
+                const f = S.fault[i], o = S.occ[i] !== null;
+                const cls = f ? 'fault' : o ? 'occ' : '';
+                segs[i].setAttribute('class', 'seg ' + cls);
+                chips[i].className = 'chip ' + cls;
+                chips[i].setAttribute('aria-pressed', f);
+                chips[i].lastChild.textContent = f ? 'Sensor fault' : o ? `Occupied · T${S.occ[i]}` : 'Clear';
+                sigs[i].setAttribute('class', 'sig' + (holdReason(i) ? '' : ' go'));
+            });
+            const p = permState();
+            PERMS.forEach((x, k) => {
+                permEls[k].classList.toggle('ok', p[x.key]);
+                if (x.toggle) permEls[k].setAttribute('aria-pressed', p[x.key]);
+            });
+            $('bs-dispatch').disabled = !canDispatch();
+            const ds = $('bs-dstate');
+            const bad = PERMS.filter(x => !p[x.key]).map(x => x.label.toLowerCase());
+            const dtext = S.dispatched ? 'Dispatched, train leaving station'
+                : bad.length ? 'Dispatch inhibited. Waiting on: ' + bad.join(', ') : 'Dispatch permitted';
+            if (ds.textContent !== dtext) ds.textContent = dtext;
+            ds.className = 'dstate' + (bad.length && !S.dispatched ? ' no' : '');
+            $('bs-reset').disabled = !S.estop;
+            $('bs-estop').setAttribute('aria-pressed', S.estop);
+            const st = $('bs-status'), st2 = $('bs-status2');
+            const faults = S.fault.filter(Boolean).length;
+            const moving = trains.some(t => t.v > 0);
+            let head = 'RUNNING', sub = 'all blocks nominal', stop = false;
+            if (S.estop) { head = 'E-STOP'; sub = moving ? 'trains coasting to next brake' : 'all trains held, reset to resume'; stop = true; }
+            else if (S.rideStop) { head = 'RIDE STOP'; sub = moving ? 'trains running to next brake' : 'all trains held'; stop = true; }
+            else if (!S.air) { head = 'LOW AIR'; sub = 'brakes fail closed'; stop = true; }
+            else if (!S.drive) { head = 'DRIVE FAULT'; sub = 'lift and station drive stopped'; stop = true; }
+            else if (faults) { head = 'SENSOR FAULT'; sub = `${faults} block${faults > 1 ? 's' : ''} forced occupied`; stop = true; }
+            st.textContent = head; st2.textContent = sub;
+            st.setAttribute('class', stop ? 'stop' : '');
+        }
+
+        // ----- wiring -----
+        $('bs-dispatch').addEventListener('click', dispatch);
+        $('bs-estop').addEventListener('click', () => {
+            if (S.estop) return;
+            S.estop = true; S.dispatched = false;
+            log('E-STOP pressed: lift and drives off, all brakes closed');
+        });
+        $('bs-reset').addEventListener('click', () => { S.estop = false; log('E-stop reset by operator'); });
+        $('bs-restart').addEventListener('click', reset);
+        $('bs-auto').addEventListener('change', e => { S.auto = e.target.checked; S.autoT = 0; log('Auto operator ' + (S.auto ? 'ON' : 'OFF')); });
+        [...$('bs-count').children].forEach((btn, k) => btn.addEventListener('click', () => {
+            count = k + 1;
+            [...$('bs-count').children].forEach((x, j) => x.setAttribute('aria-pressed', j === k));
+            reset();
+        }));
+
+        if (window.matchMedia('(min-width: 980px)').matches) $('bs-logbox').open = true;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) $('bs-auto').checked = false;
+
+        // Featured card photos
+        document.querySelectorAll('.feature-media').forEach(m => {
+            const src = (m.dataset.photo || '').trim();
+            if (!src) return;
+            const img = document.createElement('img');
+            img.src = src; img.alt = m.dataset.alt || ''; img.loading = 'lazy';
+            m.prepend(img); m.classList.add('has-photo');
+        });
+        reset();
+
+        let visible = true, last = performance.now();
+        new IntersectionObserver(es => { visible = es[0].isIntersecting; last = performance.now(); }).observe($('bs'));
+        function frame(now) {
+            const dt = Math.max(0, Math.min(0.05, (now - last) / 1000)); last = now;
+            if (visible && !document.hidden) { step(dt); render(); }
+            requestAnimationFrame(frame);
+        }
+        render();
+        requestAnimationFrame(frame);
+
+        window.__bs = { get S() { return S; }, get trains() { return trains; }, step, L, N };   // for testing
+    })();
     </script>
 </body>
 </html>

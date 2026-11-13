@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>UAV Flight Stack and Telemetry | Arriana Flores</title>
+    <meta name="description" content="Case study: embedded flight stack and SDR telemetry for the Northrop Grumman Collaboration Project UAV.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="case-study.css">
+</head>
+<body>
+    <div class="draft-banner">Draft view. Red dashed boxes are notes to you and never show to visitors. Remove ?draft from the address to see the public page.</div>
+    <header class="site">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Arriana Flores</a>
+                <nav aria-label="Main">
+                    <ul>
+                        <li><a href="index.html#work">Work</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li class="desk"><a href="index.html#contact">Contact</a></li>
+                        <li class="desk"><a href="resume.pdf" target="_blank" rel="noopener" class="btn small" style="color:#fff">Résumé</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="cs-hero">
+                <a class="back" href="index.html#work">&larr; Selected work</a>
+                <p class="eyebrow">Northrop Grumman Collaboration Project · Embedded Systems · RF</p>
+                <h1>UAV Flight Stack and Telemetry</h1>
+                <p class="lead">An embedded flight stack and radio telemetry backbone for a student UAV, built and debugged across every flight test cycle.</p>
+
+                <!-- HERO MEDIA: put a photo or .mp4 path in data-src (and a poster image for video in data-poster) -->
+                <div class="hero-media" data-src="" data-poster="" data-alt="NGCP UAV"></div>
+                <div class="draft-only todo"><b>Hero media needed.</b> Best choice: the aircraft in flight or the avionics on the bench. Set <code>data-src</code> on the hero-media element.</div>
+
+                <div class="meta">
+                    <div><small>Role</small><b>Team Lead</b></div>
+                    <div><small>Timeline</small><b>Aug 2024 to present</b></div>
+                    <div><small>Program</small><b>Cal Poly Pomona · NGCP</b></div>
+                    <div><small>Key result</small><b>30% fewer comm errors</b></div>
+                </div>
+            </section>
+
+            <section class="cs-section">
+                <h2>Overview</h2>
+                <p>The Northrop Grumman Collaboration Project (NGCP) is a university program in which student teams build and fly unmanned aircraft. I lead the team and built the flight stack and the telemetry backbone.</p>
+                <p class="caption">NGCP is a university collaboration project. It is not employment with Northrop Grumman.</p>
+                <div class="wins">
+                    <div class="win"><b>30%</b><span>fewer communication errors</span></div>
+                    <div class="win"><b>On time</b><span>telemetry backbone delivery</span></div>
+                </div>
+            </section>
+
+            <section class="cs-section">
+                <h2>My role</h2>
+                <ul>
+                    <li>Designed a flight stack using Raspberry Pi, Pixhawk and QGroundControl.</li>
+                    <li>Optimized data flow over I2C and UART, reducing communication errors by 30%.</li>
+                    <li>Built a cost-efficient UAV telemetry backbone using KrakenSDR on Linux.</li>
+                    <li>Managed radio direction finding for high-reliability performance and on-time delivery.</li>
+                    <li>Prototyped and debugged the embedded flight control stack across all flight test cycles.</li>
+                </ul>
+                <div class="draft-only todo"><b>To write:</b> Team size, and which parts you built hands-on versus directed as Team Lead.</div>
+            </section>
+
+            <section class="cs-section">
+                <h2>System architecture</h2>
+                <p>The stack bridges high-level mission planning with low-level hardware execution. A separate radio chain handles telemetry and direction finding.</p>
+                <div class="arch" role="img" aria-label="Simplified architecture: QGroundControl mission planning, Raspberry Pi and Pixhawk flight stack linked over I2C and UART, and a KrakenSDR telemetry chain on Linux.">
+                    <div class="layer"><div class="node"><b>QGroundControl</b><span>mission planning</span></div></div>
+                    <div class="link"></div>
+                    <div class="layer">
+                        <div class="node"><b>Raspberry Pi</b><span>embedded computer, Linux</span></div>
+                        <div class="node"><b>Pixhawk</b><span>flight controller</span></div>
+                    </div>
+                    <div class="link"></div>
+                    <div class="layer"><div class="node bus"><b>I2C / UART data links</b><span>optimized, 30% fewer errors</span></div></div>
+                    <div class="link"></div>
+                    <div class="layer"><div class="node"><b>KrakenSDR</b><span>telemetry and radio direction finding</span></div></div>
+                </div>
+                <p class="caption">Simplified illustration of the layers, not a wiring diagram.</p>
+                <div class="draft-only todo"><b>To write:</b> Confirm the sketch, then add which links are I2C and which are UART, and what was causing the communication errors before your fix.</div>
+            </section>
+
+            <section class="cs-section">
+                <h2>Results</h2>
+                <ul>
+                    <li>Communication errors reduced by 30% after optimizing I2C and UART data flow.</li>
+                    <li>Flight control stack prototyped and debugged across all flight test cycles.</li>
+                    <li>Telemetry backbone delivered on time.</li>
+                </ul>
+                <div class="tags"><span>Raspberry Pi</span><span>Pixhawk</span><span>QGroundControl</span><span>I2C / UART</span><span>KrakenSDR</span><span>Linux</span></div>
+                <p style="margin-top:14px">Next step: a <a href="projects.html#project-09">custom SDR board</a>, now in development.</p>
+                <div class="draft-only todo"><b>To write:</b> How the 30% was measured (before and after, over how many flights or test hours).</div>
+            </section>
+
+            <section class="cs-section">
+                <h2>Why it matters for show control</h2>
+                <p>A show network and a flight stack share the same hard problems: several controllers that must talk reliably, tight timing, and faults that have to be found fast in the field. The integration and debugging habits I built here are the ones I use on attractions.</p>
+            </section>
+
+            <section class="cs-section draft-only">
+                <h2>Engineering challenge</h2>
+                <div class="draft-only todo"><b>To write:</b> One debugging story from a flight test: symptom, how you isolated it, the fix.</div>
+            </section>
+
+            <section class="cs-section draft-only">
+                <h2>Lessons learned</h2>
+                <div class="draft-only todo"><b>To write:</b> Two or three takeaways in your own words.</div>
+            </section>
+
+            <section class="cs-section" data-gallery>
+                <h2>Gallery</h2>
+                <div class="gallery">
+                    <figure class="media" data-src="" data-poster="" data-alt="UAV on the bench or in flight"><figcaption>UAV on the bench or in flight</figcaption></figure>
+                    <figure class="media" data-src="" data-poster="" data-alt="Raspberry Pi and Pixhawk wiring"><figcaption>Raspberry Pi and Pixhawk wiring</figcaption></figure>
+                    <figure class="media" data-src="" data-poster="" data-alt="KrakenSDR setup"><figcaption>KrakenSDR setup</figcaption></figure>
+                    <figure class="media" data-src="" data-poster="" data-alt="QGroundControl screen during a test"><figcaption>QGroundControl screen during a test</figcaption></figure>
+                </div>
+                <div class="draft-only todo"><b>Before publishing media:</b> confirm you have permission to share team and collaborative project photos, and keep each video short and compressed (under about 5 MB) so it loads on expo wifi.</div>
+            </section>
+
+
+            <section class="cs-section">
+                <h2>Want the details?</h2>
+                <p>I'm happy to walk through the design decisions, the wiring, or the code.</p>
+                <div class="next">
+                    <a class="btn" href="resume.pdf" target="_blank" rel="noopener">View résumé</a>
+                    <a class="btn ghost" href="mailto:arriana.f@outlook.com">Email me</a>
+                    <a class="btn ghost" href="nl-robotics.html">Next: Robotic Control</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer><div class="container"><p>© 2026 Arriana Flores · Cal Poly Pomona · Electrical and Computer Engineering</p></div></footer>
+
+    <div class="action-bar" role="navigation" aria-label="Quick contact">
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
+        <a class="btn ghost" href="mailto:arriana.f@outlook.com">Email</a>
+        <a class="btn ghost" href="https://linkedin.com/in/arrianaf" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+
+    <script>
+        // Draft view: add ?draft to the address to see your to-do notes and empty media slots.
+        if (new URLSearchParams(location.search).has('draft')) document.documentElement.classList.add('draft');
+
+        // Media slots: fill data-src with an image or .mp4 path. Empty slots stay hidden from visitors.
+        document.querySelectorAll('.hero-media, figure.media').forEach(slot => {
+            const src = (slot.dataset.src || '').trim();
+            if (!src) {
+                slot.classList.add('draft-only', 'todo');
+                slot.insertAdjacentHTML('afterbegin', '<b>Empty media slot:</b> ' + (slot.dataset.alt || ''));
+                if (slot.tagName === 'FIGURE') slot.querySelector('figcaption').remove();
+                return;
+            }
+            let m;
+            if (/\.(mp4|webm)$/i.test(src)) {
+                m = document.createElement('video');
+                m.controls = true; m.preload = 'none'; m.playsInline = true;
+                if (slot.dataset.poster) m.poster = slot.dataset.poster;
+                m.setAttribute('aria-label', slot.dataset.alt || '');
+            } else {
+                m = document.createElement('img');
+                m.alt = slot.dataset.alt || ''; m.loading = 'lazy';
+            }
+            m.src = src;
+            slot.prepend(m);
+        });
+        // Hide the gallery if every slot in it is empty
+        document.querySelectorAll('[data-gallery]').forEach(sec => {
+            if (!sec.querySelector('figure.media:not(.draft-only)')) sec.classList.add('draft-only');
+        });
+    </script>
+</body>
+</html>
